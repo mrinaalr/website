@@ -72,6 +72,24 @@ body {
     font-weight: 300;
 }
 
+.painting-note {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.painting-note p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin: 0;
+    font-style: italic;
+}
+
 /* Main Content */
 main {
     padding: 3rem 0;
@@ -181,6 +199,18 @@ h2 {
 .link-card span {
     font-size: 1.1rem;
     font-weight: 500;
+}
+
+/* About Me Section */
+.about-me-section {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.about-me-card {
+    max-width: 300px;
+    justify-content: center;
 }
 
 /* Navigation */
