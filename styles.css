@@ -115,6 +115,10 @@ h2 {
     max-width: 800px;
 }
 
+.about-page .about p {
+    text-align: justify;
+}
+
 /* Projects */
 .projects {
     display: flex;
