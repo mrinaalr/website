@@ -210,7 +210,9 @@ h2 {
 
 .about-me-card {
     max-width: 300px;
+    width: auto;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 /* Navigation */
@@ -266,6 +268,11 @@ footer {
 
     .link-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-me-card {
+        max-width: 100%;
+        width: auto;
     }
 }
 
