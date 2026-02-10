@@ -111,6 +111,12 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.project-card.featured {
+    border-color: var(--link-color);
+    border-width: 2px;
+    background: rgba(74, 158, 255, 0.1);
+}
+
 .project-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
