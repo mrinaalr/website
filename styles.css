@@ -81,10 +81,11 @@ body {
     border-radius: 8px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
 }
 
 .painting-note p {
-    color: var(--text-color);
+    color: var(--text-color) !important;
     font-size: 0.9rem;
     margin: 0;
     font-style: italic;
@@ -209,10 +210,11 @@ h2 {
 }
 
 .about-me-card {
-    max-width: 300px;
-    width: auto;
+    max-width: 300px !important;
+    width: auto !important;
     justify-content: center;
     flex-shrink: 0;
+    min-width: 200px;
 }
 
 /* Navigation */
