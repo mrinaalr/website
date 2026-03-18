@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Mrinaal Ramachandran</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Me - Mrinaal Ramachandran</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            .hero-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: opacity 1.5s ease-in-out;
+            }
+    
+            .hero-image.active {
+                opacity: 1;
+            }
+    
+            .hero-image.inactive {
+                opacity: 0;
+            }
+        </style>
+    </head>
 <body class="about-page">
     <div class="container">
         <header>
             <div class="hero">
-                <img src="window.jpg" alt="Mrinaal Ramachandran" class="hero-image">
+                <img src="window.jpg" alt="Window" class="hero-image active" id="img2">
+                <img src="desert.jpg" alt="Desert" class="hero-image inactive" id="img1">
                 <div class="hero-overlay">
                     <p class="tagline">A bit about my background and interests</p>
                 </div>
@@ -60,5 +80,28 @@
             <p>&copy; 2026 Mrinaal Ramachandran</p>
         </footer>
     </div>
+
+    <script>
+    const img1 = document.getElementById('img1');
+    const img2 = document.getElementById('img2');
+    let showingFirst = false;
+
+    function scheduleNext() {
+        const delay = 3000 + Math.random() * 7000;
+        setTimeout(() => {
+            if (showingFirst) {
+                img1.classList.replace('active', 'inactive');
+                img2.classList.replace('inactive', 'active');
+            } else {
+                img2.classList.replace('active', 'inactive');
+                img1.classList.replace('inactive', 'active');
+            }
+            showingFirst = !showingFirst;
+            scheduleNext();
+        }, delay);
+    }
+
+    scheduleNext();
+    </script>
 </body>
 </html>
