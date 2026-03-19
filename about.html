@@ -74,6 +74,14 @@
                     explore new places. 
                 </p>
             </section>
+            <div class="mma-video-container">
+                <video autoplay muted loop playsinline id="mmaVideo">
+                    <source src="bag.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay-text">Click to unmute</div>
+            </div>
+
+
         </main>
 
         <footer>
@@ -102,6 +110,30 @@
     }
 
     scheduleNext();
+
+    
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+    });
+});
+
+observer.observe(document.querySelector(".mma-video-container"));
+
+
+    // Video click to unmute
+    const video = document.getElementById("mmaVideo");
+    if (video) {
+        video.addEventListener("click", () => {
+            video.muted = !video.muted;
+        });
+    }
+
+
+
     </script>
+    
 </body>
 </html>
