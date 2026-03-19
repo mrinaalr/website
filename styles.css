@@ -305,14 +305,27 @@ h2 {
     fill: white;
 }
 
+.interests-media-section {
+    margin-top: 2rem;
+}
+
+.interests-media-grid {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.4rem;
+}
+
 .mma-video-container {
     position: relative;
+    width: 700px;
     max-width: 700px;
-    margin: 25px 10px;   /* remove auto centering */
+    margin: 25px 10px 25px 0;
+    flex: 0 0 700px;
 }
 
 .mma-video-container video {
     width: 100%;
+    display: block;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     cursor: pointer;
@@ -321,6 +334,18 @@ h2 {
 
 .mma-video-container video:hover {
     transform: scale(1.02);
+}
+
+.primary-video-wrap {
+    position: relative;
+}
+
+.secondary-video {
+    width: 100%;
+    margin-top: 12px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    pointer-events: none; /* no clicking/unmuting */
 }
 
 .video-overlay-text {
@@ -332,6 +357,87 @@ h2 {
     opacity: 0.7;
     pointer-events: none;
 }
+
+.side-media-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 410px;
+    margin-top: 25px;
+}
+
+.side-media-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+    aspect-ratio: 1 / 1;
+}
+
+.side-media-card.tall {
+    aspect-ratio: 1 / 1.24;
+}
+
+.side-media-card img,
+.side-media-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.side-media-card video {
+    pointer-events: none;
+}
+
+@media (max-width: 1180px) {
+    .interests-media-grid {
+        flex-direction: column;
+    }
+
+    .mma-video-container {
+        width: 100%;
+        max-width: 700px;
+        flex: none;
+        margin-right: 0;
+    }
+
+    .side-media-column {
+        width: 100%;
+        max-width: 700px;
+        margin-top: 0;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .side-media-card,
+    .side-media-card.tall {
+        aspect-ratio: 1 / 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-media-column {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .side-media-column {
+        grid-template-columns: 1fr;
+    }
+
+    .side-media-card,
+    .side-media-card.tall {
+        aspect-ratio: 16 / 11;
+    }
+}
+
+
+
+
+
 
 /* Footer */
 footer {

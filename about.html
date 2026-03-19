@@ -74,12 +74,67 @@
                     explore new places. 
                 </p>
             </section>
-            <div class="mma-video-container">
-                <video autoplay muted loop playsinline id="mmaVideo">
-                    <source src="bag.mp4" type="video/mp4">
-                </video>
-                <div class="video-overlay-text">Click to unmute</div>
-            </div>
+            <section class="interests-media-section">
+                <div class="interests-media-grid">
+                    <div class="mma-video-container">
+                        <div class="primary-video-wrap">
+                            <video autoplay muted loop playsinline preload="metadata" id="mmaVideo">
+                                <source src="bag.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay-text">Click to unmute</div>
+                        </div>
+                    
+                        <video autoplay muted loop playsinline preload="metadata" class="secondary-video">
+                            <source src="mountain.mp4" type="video/mp4">
+                        </video>
+
+                        <video autoplay muted loop playsinline preload="metadata" class="secondary-video">
+                            <source src="texas.mp4" type="video/mp4">
+                        </video>
+                    </div>
+            
+                    <div class="side-media-column">
+                        <div class="side-media-card">
+                            <img src="taco.jpg" alt="Taco">
+                        </div>
+            
+                        <div class="side-media-card">
+                            <img src="bots.JPG" alt="Tacbobots">
+                        </div>
+            
+                        <div class="side-media-card tall">
+                            <img src="wp.JPG" alt="Water Polo">
+                        </div>
+            
+                        <div class="side-media-card tall">
+                            <video autoplay muted loop playsinline>
+                                <source src="war.mp4" type="video/mp4">
+                            </video>
+                        </div>
+            
+                        <div class="side-media-card tall">
+                            <video autoplay muted loop playsinline>
+                                <source src="washington.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="side-media-card tall">
+                            <video autoplay muted loop playsinline>
+                                <source src="desert.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="side-media-card tall">
+                            <video autoplay muted loop playsinline>
+                                <source src="car.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="side-media-card tall">
+                            <video autoplay muted loop playsinline>
+                                <source src="grad.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
         </main>
@@ -120,8 +175,10 @@ const observer = new IntersectionObserver(entries => {
     });
 });
 
-observer.observe(document.querySelector(".mma-video-container"));
-
+const mediaContainer = document.querySelector(".mma-video-container");
+if (mediaContainer) {
+    observer.observe(mediaContainer);
+}
 
     // Video click to unmute
     const video = document.getElementById("mmaVideo");
