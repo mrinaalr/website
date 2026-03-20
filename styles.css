@@ -340,6 +340,22 @@ h2 {
     position: relative;
 }
 
+.primary-video-wrap .primary-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.primary-video-wrap .primary-video.active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .secondary-video {
     width: 100%;
     margin-top: 12px;

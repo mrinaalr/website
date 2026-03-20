@@ -77,8 +77,11 @@
             <section class="interests-media-section">
                 <div class="interests-media-grid">
                     <div class="mma-video-container">
-                        <div class="primary-video-wrap">
-                            <video autoplay muted loop playsinline preload="metadata" id="mmaVideo">
+                        <div class="primary-video-wrap" id="primaryVideoWrap">
+                            <video autoplay muted loop playsinline preload="auto" id="mmaVideo" class="primary-video active">
+                                <source src="mma.mp4" type="video/mp4">
+                            </video>
+                            <video muted loop playsinline preload="auto" id="bagVideo" class="primary-video">
                                 <source src="bag.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay-text">Click to unmute</div>
@@ -193,11 +196,46 @@ if (mediaContainer) {
     observer.observe(mediaContainer);
 }
 
-    // Video click to unmute
-    const video = document.getElementById("mmaVideo");
-    if (video) {
-        video.addEventListener("click", () => {
-            video.muted = !video.muted;
+    // Video: single click unmute / switch; double click mute. Saves position when switching.
+    const wrap = document.getElementById("primaryVideoWrap");
+    const mmaVideo = document.getElementById("mmaVideo");
+    const bagVideo = document.getElementById("bagVideo");
+    const overlay = document.querySelector(".video-overlay-text");
+    if (wrap && mmaVideo && bagVideo) {
+        const videos = [mmaVideo, bagVideo];
+        let videoIdx = 0;
+        let clickTimer = null;
+        const positions = [0, 0];
+        const syncMute = (muted) => { mmaVideo.muted = bagVideo.muted = muted; };
+        bagVideo.pause();
+        wrap.addEventListener("click", () => {
+            const active = videos[videoIdx];
+            if (active.muted) {
+                syncMute(false);
+                overlay.textContent = "Double press to mute / Press to switch to bag work";
+                return;
+            }
+            if (clickTimer) {
+                clearTimeout(clickTimer);
+                clickTimer = null;
+                syncMute(true);
+                overlay.textContent = "Click to unmute";
+                return;
+            }
+            clickTimer = setTimeout(() => {
+                clickTimer = null;
+                positions[videoIdx] = active.currentTime;
+                active.classList.remove("active");
+                active.pause();
+                videoIdx = 1 - videoIdx;
+                const next = videos[videoIdx];
+                next.currentTime = positions[videoIdx];
+                next.classList.add("active");
+                next.play();
+                overlay.textContent = videoIdx === 0
+                    ? "Double press to mute / Press to switch to bag work"
+                    : "Double press to mute / Press to switch back";
+            }, 300);
         });
     }
 
