@@ -79,10 +79,10 @@
                     <div class="mma-video-container">
                         <div class="primary-video-wrap" id="primaryVideoWrap">
                             <video autoplay muted loop playsinline preload="auto" id="mmaVideo" class="primary-video active">
-                                <source src="mma.mp4" type="video/mp4">
+                                <source src="bag.mp4" type="video/mp4">
                             </video>
                             <video muted loop playsinline preload="auto" id="bagVideo" class="primary-video">
-                                <source src="bag.mp4" type="video/mp4">
+                                <source src="mma.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay-text">Click to unmute</div>
                         </div>
@@ -212,7 +212,7 @@ if (mediaContainer) {
             const active = videos[videoIdx];
             if (active.muted) {
                 syncMute(false);
-                overlay.textContent = "Double press to mute / Press to switch to bag work";
+                overlay.textContent = "Double press to mute / Press to switch";
                 return;
             }
             if (clickTimer) {
@@ -233,7 +233,7 @@ if (mediaContainer) {
                 next.classList.add("active");
                 next.play();
                 overlay.textContent = videoIdx === 0
-                    ? "Double press to mute / Press to switch to bag work"
+                    ? "Double press to mute / Press to switch to MMA"
                     : "Double press to mute / Press to switch back";
             }, 300);
         });
