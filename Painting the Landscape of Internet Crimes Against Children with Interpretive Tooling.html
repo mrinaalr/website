@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painting the Landscape of Internet Crimes Against Children with Interpretive Tooling</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #f2ead8;
+  --parchment: #e8dcc8;
+  --tan: #d4c4a0;
+  --tan-light: #e0d4b8;
+  --brown: #2c1f0e;
+  --brown-mid: #4a3520;
+  --brown-light: #6b4f32;
+  --rust: #8b3a1e;
+  --rust-light: #a84c2a;
+  --olive: #5c6b3a;
+  --olive-light: #7a8f4e;
+  --rule: #b8a882;
+  --rule-light: #cfc0a0;
+}
+
+@media print {
+  .page { page-break-after: always; }
+}
+
+body {
+  background: #d0c8b8;
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--brown);
+}
+
+.page {
+  background: var(--cream);
+  width: 1100px;
+  min-height: 850px;
+  margin: 0 auto 40px auto;
+  padding: 0;
+  position: relative;
+}
+
+/* ── COVER PAGE STYLES ── */
+.cover-page {
+  background: var(--cream);
+  width: 1100px;
+  min-height: 850px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  background: var(--brown);
+  padding: 14px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar-left {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tan);
+}
+.top-bar-right {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rule);
+  font-style: italic;
+}
+
+.cover-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 56px 0 56px;
+}
+
+.cover-eyebrow {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 14px;
+}
+
+.title-block {
+  border-left: 5px solid var(--rust);
+  padding-left: 24px;
+  margin-bottom: 32px;
+}
+
+.report-label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 10px;
+}
+
+.main-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 38px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.main-title span { color: var(--rust); }
+
+.cover-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  color: var(--brown-light);
+  line-height: 1.5;
+  font-style: italic;
+  max-width: 680px;
+}
+
+.cover-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: 28px;
+}
+
+.cover-content-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+  flex: 1;
+  margin-bottom: 28px;
+}
+
+.cover-left {
+  padding-right: 40px;
+  border-right: 1px solid var(--rule);
+}
+
+.cover-right {
+  padding-left: 40px;
+}
+
+.inside-label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 18px;
+}
+
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.bullet-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.bullet-num {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tan);
+  line-height: 1;
+  min-width: 28px;
+  padding-top: 2px;
+}
+
+.bullet-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 5px;
+  line-height: 1.25;
+}
+
+.bullet-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--brown-mid);
+}
+
+.scale-block {
+  background: var(--brown);
+  padding: 18px 20px;
+}
+
+.scale-label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rule);
+  margin-bottom: 14px;
+}
+
+.scale-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.scale-num {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.scale-num.rust { color: #c4602e; }
+
+.scale-desc {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--tan);
+}
+
+/* BRIEFING CONTENTS - RIGHT SIDE */
+.pages-label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--brown);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--brown);
+}
+
+.pages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.page-item {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 11px;
+  background: var(--parchment);
+  border: 1px solid var(--tan);
+  border-left: 3px solid var(--rule);
+}
+
+.page-item:nth-child(1)  { border-left-color: var(--rust); }
+.page-item:nth-child(2)  { border-left-color: var(--rust); }
+.page-item:nth-child(3)  { border-left-color: var(--olive); }
+.page-item:nth-child(4)  { border-left-color: var(--olive); }
+.page-item:nth-child(5)  { border-left-color: var(--brown-mid); }
+.page-item:nth-child(6)  { border-left-color: var(--brown-mid); }
+.page-item:nth-child(7)  { border-left-color: var(--brown-light); }
+.page-item:nth-child(8)  { border-left-color: var(--brown-light); }
+.page-item:nth-child(9)  { border-left-color: var(--rust); }
+.page-item:nth-child(10) { border-left-color: var(--rust); }
+
+.page-num {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--rule);
+  min-width: 16px;
+}
+
+.page-name {
+  font-size: 11.5px;
+  color: var(--brown-mid);
+  line-height: 1.3;
+}
+
+.page-name strong { color: var(--brown); font-weight: 600; }
+
+/* COVER BOTTOM */
+.bottom-rule-top  { width: 100%; height: 1px; background: var(--rule); }
+.bottom-rule-thick { width: 100%; height: 3px; background: var(--brown); }
+
+.bottom-bar {
+  background: var(--parchment);
+  border-top: 1px solid var(--rule);
+  padding: 13px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-left {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brown);
+}
+.bottom-left span {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--brown-light);
+  font-size: 10.5px;
+}
+
+.bottom-creds {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--brown-light);
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.7;
+  text-align: right;
+}
+
+/* ── SHARED INNER-PAGE ELEMENTS ── */
+.inner-page {
+  padding: 44px 56px 28px 56px;
+}
+
+.top-rule-thick { width: 100%; height: 3px; background: var(--brown); margin-bottom: 3px; }
+.top-rule-thin  { width: 100%; height: 1px; background: var(--brown); margin-bottom: 24px; }
+.rule-h         { width: 100%; height: 1px; background: var(--rule); }
+.rule-h-thick   { width: 100%; height: 2px; background: var(--brown); }
+
+.page-eyebrow {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 6px;
+}
+
+.page-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--brown-light);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.section-label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 10px;
+}
+
+.roman { color: var(--rust); margin-right: 5px; }
+
+.body-text { font-size: 13px; line-height: 1.75; color: var(--brown-mid); }
+
+.footer-wrap { margin-top: 24px; }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  color: var(--brown-light);
+  font-family: 'Libre Baskerville', serif;
+  padding-top: 8px;
+}
+.footer-left  { font-style: italic; }
+.footer-right { text-align: right; }
+
+/* ── TILE STYLES ── */
+.tile { background: var(--parchment); border: 1px solid var(--tan); padding: 11px 13px; }
+.tile.rust-accent  { border-left: 3px solid var(--rust); }
+.tile.olive-accent { border-left: 3px solid var(--olive); }
+.tile.brown-accent { border-left: 3px solid var(--brown-mid); }
+.tile.rust-top     { border-top: 3px solid var(--rust); border-left: none; }
+.tile.olive-top    { border-top: 3px solid var(--olive); border-left: none; }
+.tile.brown-top    { border-top: 3px solid var(--brown-mid); border-left: none; }
+
+.tile-label { font-size: 8px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--olive); margin-bottom: 3px; font-family: 'Libre Baskerville', serif; }
+.tile-label.rust  { color: var(--rust); }
+.tile-label.brown { color: var(--brown-mid); }
+.tile-value { font-size: 13px; font-weight: 600; color: var(--brown); line-height: 1.35; }
+.tile-body  { font-size: 11.5px; line-height: 1.6; color: var(--brown-mid); }
+.tile-name  { font-family: 'Libre Baskerville', serif; font-size: 11.5px; font-weight: 700; color: var(--brown); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.stat-row { display: flex; align-items: flex-start; gap: 14px; padding: 10px 13px; background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--rust); }
+.stat-number { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--rust); line-height: 1; white-space: nowrap; min-width: 72px; padding-top: 2px; }
+.stat-desc   { font-size: 12px; line-height: 1.55; color: var(--brown-mid); }
+
+/* ══ PAGE 1 ══ */
+#p1 .header-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+#p1 .header-right { text-align: right; font-size: 11px; color: var(--brown-light); font-style: italic; line-height: 1.6; }
+#p1 .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+#p1 .section-definition { padding-right: 30px; padding-bottom: 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+#p1 .section-scale { padding-left: 30px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); }
+#p1 .section-vectors { grid-column: 1/3; padding-top: 22px; }
+#p1 .infra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 14px; }
+#p1 .vectors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+
+/* ══ PAGE 2 ══ */
+#p2 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 16px; }
+#p2 .col-offense { padding-right: 28px; border-right: 1px solid var(--rule); }
+#p2 .col-enforce { padding-left: 28px; }
+#p2 .col-header { font-family: 'Libre Baskerville', serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 7px 12px; margin-bottom: 12px; }
+#p2 .col-header.offense { background: var(--rust); color: var(--cream); }
+#p2 .col-header.enforce { background: var(--olive); color: var(--cream); }
+#p2 .tech-list { display: flex; flex-direction: column; gap: 7px; }
+#p2 .tech-item { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; background: var(--parchment); border: 1px solid var(--tan); }
+#p2 .tech-item.offense-item { border-left: 3px solid var(--rust); }
+#p2 .tech-item.enforce-item { border-left: 3px solid var(--olive); }
+#p2 .tech-name { font-family: 'Libre Baskerville', serif; font-size: 11px; font-weight: 700; color: var(--brown); min-width: 120px; line-height: 1.3; }
+#p2 .tech-desc { font-size: 11px; line-height: 1.5; color: var(--brown-mid); }
+#p2 .bottom-note { background: var(--parchment); border: 1px solid var(--tan); border-top: 2px solid var(--brown-mid); padding: 12px 16px; font-size: 12.5px; line-height: 1.7; color: var(--brown-mid); font-style: italic; }
+
+/* ══ PAGE 3 ══ */
+#p3 .numbers-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 18px; }
+#p3 .num-tile { background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--rust); padding: 10px 12px; }
+#p3 .num-tile.olive { border-left-color: var(--olive); }
+#p3 .num-big { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--rust); line-height: 1; margin-bottom: 3px; }
+#p3 .num-tile.olive .num-big { color: var(--olive); }
+#p3 .num-label { font-size: 10.5px; color: var(--brown-mid); line-height: 1.4; }
+#p3 .ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+#p3 .eco-tile { background: var(--parchment); border: 1px solid var(--tan); border-top: 3px solid var(--brown-mid); padding: 12px 13px; }
+#p3 .eco-tile.rust  { border-top-color: var(--rust); }
+#p3 .eco-tile.olive { border-top-color: var(--olive); }
+#p3 .eco-name { font-family: 'Libre Baskerville', serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brown); margin-bottom: 5px; }
+#p3 .eco-body { font-size: 11.5px; line-height: 1.6; color: var(--brown-mid); }
+#p3 .pipeline { background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--brown); padding: 14px 16px; }
+#p3 .pipeline-title { font-family: 'Libre Baskerville', serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brown); margin-bottom: 10px; }
+#p3 .pipeline-flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+#p3 .pipeline-step { background: var(--cream); border: 1px solid var(--tan); padding: 6px 10px; font-size: 10.5px; font-weight: 600; color: var(--brown-mid); font-family: 'Libre Baskerville', serif; text-align: center; white-space: nowrap; }
+#p3 .pipeline-arrow { font-size: 14px; color: var(--rust); font-weight: 700; }
+
+/* ══ PAGE 4 ══ */
+#p4 .top-row { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+#p4 .top-left { padding-right: 28px; border-right: 1px solid var(--rule); }
+#p4 .top-right { padding-left: 28px; }
+#p4 .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 14px; }
+#p4 .pipeline-row { display: flex; align-items: stretch; gap: 0; margin-bottom: 20px; }
+#p4 .pipe-step { flex: 1; background: var(--parchment); border: 1px solid var(--tan); border-right: none; padding: 10px 10px; }
+#p4 .pipe-step:last-child { border-right: 1px solid var(--tan); }
+#p4 .pipe-step-num  { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--rule); line-height: 1; margin-bottom: 4px; }
+#p4 .pipe-step-name { font-family: 'Libre Baskerville', serif; font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brown); margin-bottom: 4px; }
+#p4 .pipe-step-desc { font-size: 10.5px; line-height: 1.5; color: var(--brown-mid); }
+#p4 .pipe-step.highlight { background: var(--brown); border-color: var(--brown); }
+#p4 .pipe-step.highlight .pipe-step-num  { color: var(--rust-light); }
+#p4 .pipe-step.highlight .pipe-step-name { color: var(--cream); }
+#p4 .pipe-step.highlight .pipe-step-desc { color: var(--tan); }
+#p4 .sources-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
+#p4 .source-tile { background: var(--parchment); border: 1px solid var(--tan); padding: 7px 9px; font-size: 10px; line-height: 1.4; color: var(--brown-mid); }
+#p4 .source-tile strong { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brown); margin-bottom: 2px; font-family: 'Libre Baskerville', serif; }
+
+/* ══ PAGE 5 ══ */
+#p5 .dim-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 7px; margin-bottom: 16px; }
+#p5 .dim-tile { background: var(--parchment); border: 1px solid var(--tan); padding: 11px 11px; }
+#p5 .dim-num  { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--tan); line-height: 1; margin-bottom: 4px; }
+#p5 .dim-name { font-family: 'Libre Baskerville', serif; font-size: 10.5px; font-weight: 700; color: var(--brown); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 5px; line-height: 1.3; }
+#p5 .dim-desc { font-size: 10.5px; line-height: 1.55; color: var(--brown-mid); }
+#p5 .dim-tile:nth-child(1)  { border-top: 3px solid var(--rust); }
+#p5 .dim-tile:nth-child(2)  { border-top: 3px solid var(--rust); }
+#p5 .dim-tile:nth-child(3)  { border-top: 3px solid var(--olive); }
+#p5 .dim-tile:nth-child(4)  { border-top: 3px solid var(--olive); }
+#p5 .dim-tile:nth-child(5)  { border-top: 3px solid var(--brown-mid); }
+#p5 .dim-tile:nth-child(6)  { border-top: 3px solid var(--rust); }
+#p5 .dim-tile:nth-child(7)  { border-top: 3px solid var(--olive); }
+#p5 .dim-tile:nth-child(8)  { border-top: 3px solid var(--olive); }
+#p5 .dim-tile:nth-child(9)  { border-top: 3px solid var(--brown-mid); }
+#p5 .dim-tile:nth-child(10) { border-top: 3px solid var(--brown-mid); }
+#p5 .framework-note { background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--brown); padding: 12px 16px; font-size: 12.5px; line-height: 1.7; color: var(--brown-mid); }
+
+/* ══ PAGE 6 ══ */
+#p6 .selection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+#p6 .sel-left  { padding-right: 28px; border-right: 1px solid var(--rule); }
+#p6 .sel-right { padding-left: 28px; }
+#p6 .criteria-list { display: flex; flex-direction: column; gap: 7px; margin-top: 12px; }
+#p6 .criteria-item { display: flex; gap: 10px; align-items: flex-start; background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--rust); padding: 8px 10px; }
+#p6 .criteria-item.olive { border-left-color: var(--olive); }
+#p6 .criteria-num  { font-family: 'Libre Baskerville', serif; font-size: 14px; font-weight: 700; color: var(--rust); min-width: 20px; line-height: 1.2; }
+#p6 .criteria-item.olive .criteria-num { color: var(--olive); }
+#p6 .criteria-text { font-size: 11.5px; line-height: 1.55; color: var(--brown-mid); }
+#p6 .era-distribution { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; }
+#p6 .era-tile { background: var(--parchment); border: 1px solid var(--tan); padding: 12px 12px; }
+#p6 .era-tile:nth-child(1) { border-top: 4px solid var(--brown-light); }
+#p6 .era-tile:nth-child(2) { border-top: 4px solid var(--olive); }
+#p6 .era-tile:nth-child(3) { border-top: 4px solid var(--rust); }
+#p6 .era-tile:nth-child(4) { border-top: 4px solid var(--brown); }
+#p6 .era-label  { font-size: 8px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--brown-light); margin-bottom: 3px; font-family: 'Libre Baskerville', serif; }
+#p6 .era-name   { font-family: 'Libre Baskerville', serif; font-size: 12px; font-weight: 700; color: var(--brown); margin-bottom: 6px; line-height: 1.3; }
+#p6 .era-years  { font-size: 10px; color: var(--brown-light); margin-bottom: 8px; font-style: italic; }
+#p6 .era-cases  { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--rust); line-height: 1; margin-bottom: 3px; }
+#p6 .era-cases-label { font-size: 9.5px; color: var(--brown-mid); }
+#p6 .era-platforms    { font-size: 10.5px; color: var(--brown-mid); line-height: 1.5; margin-top: 7px; }
+
+/* ══ PAGES 7 & 8 SHARED ══ */
+.era-findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.era-col-1 { padding-right: 28px; border-right: 1px solid var(--rule); }
+.era-col-2 { padding-left: 28px; }
+.era-col-header { font-family: 'Libre Baskerville', serif; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 6px 10px; margin-bottom: 12px; color: var(--cream); }
+.era-col-header.era1 { background: var(--brown-light); }
+.era-col-header.era2 { background: var(--olive); }
+.era-col-header.era3 { background: var(--rust); }
+.era-col-header.era4 { background: var(--brown); }
+.finding-list { display: flex; flex-direction: column; gap: 7px; }
+.finding-item { background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--brown-light); padding: 8px 10px; font-size: 11.5px; line-height: 1.6; color: var(--brown-mid); }
+.finding-item.era2 { border-left-color: var(--olive); }
+.finding-item.era3 { border-left-color: var(--rust); }
+.finding-item.era4 { border-left-color: var(--brown); }
+.finding-item strong { color: var(--brown); font-weight: 700; }
+.case-callouts { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.callout-tile { background: var(--parchment); border: 1px solid var(--tan); border-top: 3px solid var(--rust); padding: 11px 12px; }
+.callout-tile:nth-child(2) { border-top-color: var(--olive); }
+.callout-tile:nth-child(3) { border-top-color: var(--brown-mid); }
+.callout-label { font-size: 8px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--rust); margin-bottom: 4px; font-family: 'Libre Baskerville', serif; }
+.callout-tile:nth-child(2) .callout-label { color: var(--olive); }
+.callout-tile:nth-child(3) .callout-label { color: var(--brown-mid); }
+.callout-title { font-family: 'Libre Baskerville', serif; font-size: 11.5px; font-weight: 700; color: var(--brown); margin-bottom: 5px; line-height: 1.3; }
+.callout-body  { font-size: 11px; line-height: 1.55; color: var(--brown-mid); }
+
+/* ══ PAGE 9 ══ */
+#p9 .agg-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+#p9 .agg-big-tile { background: var(--parchment); border: 1px solid var(--tan); border-top: 3px solid var(--rust); padding: 12px 14px; }
+#p9 .agg-big-tile:nth-child(2) { border-top-color: var(--olive); }
+#p9 .agg-big-tile:nth-child(3) { border-top-color: var(--brown-mid); }
+#p9 .agg-big-num { font-family: 'Libre Baskerville', serif; font-size: 32px; font-weight: 700; color: var(--rust); line-height: 1; margin-bottom: 4px; }
+#p9 .agg-big-tile:nth-child(2) .agg-big-num { color: var(--olive); }
+#p9 .agg-big-tile:nth-child(3) .agg-big-num { color: var(--brown-mid); }
+#p9 .agg-big-label { font-size: 10.5px; color: var(--brown-mid); line-height: 1.5; margin-bottom: 6px; }
+#p9 .agg-big-sub   { font-size: 10px; color: var(--brown-light); font-style: italic; line-height: 1.4; }
+#p9 .agg-mid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+#p9 .agg-mid-left  { padding-right: 28px; border-right: 1px solid var(--rule); }
+#p9 .agg-mid-right { padding-left: 28px; }
+#p9 .finding-item.olive { border-left-color: var(--olive); }
+#p9 .agg-bottom { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; }
+#p9 .platform-tile { background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--brown-mid); padding: 9px 10px; }
+#p9 .platform-name { font-family: 'Libre Baskerville', serif; font-size: 11px; font-weight: 700; color: var(--brown); margin-bottom: 3px; }
+#p9 .platform-stat  { font-size: 10.5px; color: var(--brown-mid); line-height: 1.5; }
+
+/* ══ PAGE 10 ══ */
+#p10 .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+#p10 .uc-left  { padding-right: 28px; border-right: 1px solid var(--rule); }
+#p10 .uc-right { padding-left: 28px; }
+#p10 .audience-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+#p10 .audience-tile { background: var(--parchment); border: 1px solid var(--tan); border-left: 3px solid var(--rust); padding: 10px 12px; }
+#p10 .audience-tile:nth-child(2) { border-left-color: var(--olive); }
+#p10 .audience-tile:nth-child(3) { border-left-color: var(--brown-mid); }
+#p10 .audience-tile:nth-child(4) { border-left-color: var(--brown-light); }
+#p10 .audience-name { font-family: 'Libre Baskerville', serif; font-size: 11.5px; font-weight: 700; color: var(--brown); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+#p10 .audience-desc { font-size: 11px; line-height: 1.55; color: var(--brown-mid); }
+#p10 .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 12px; }
+#p10 .tool-tile { background: var(--parchment); border: 1px solid var(--tan); border-top: 3px solid var(--olive); padding: 9px 11px; }
+#p10 .tool-name { font-family: 'Libre Baskerville', serif; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brown); margin-bottom: 3px; }
+#p10 .tool-desc { font-size: 10.5px; color: var(--brown-mid); line-height: 1.5; }
+#p10 .cta-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+#p10 .cta-tile { background: var(--brown); border: 1px solid var(--brown-mid); padding: 14px 16px; text-align: center; }
+#p10 .cta-tile.rust-bg  { background: var(--rust); }
+#p10 .cta-tile.olive-bg { background: var(--olive); }
+#p10 .cta-label { font-size: 8.5px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--tan); margin-bottom: 5px; font-family: 'Libre Baskerville', serif; }
+#p10 .cta-value { font-family: 'Libre Baskerville', serif; font-size: 12px; font-weight: 700; color: var(--cream); line-height: 1.35; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     COVER PAGE
+══════════════════════════════════════ -->
+<div class="cover-page">
+  <div class="top-bar">
+    <div class="top-bar-left">CaseLinker &nbsp;·&nbsp; Report #5 &nbsp;·&nbsp; Final Report</div>
+    <div class="top-bar-right">Painting the Landscape of Internet Crimes Against Children with Interpretive Tooling</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="title-block">
+      <div class="report-label">Technical Briefing &nbsp;·&nbsp; 10 Pages &nbsp;·&nbsp; Open Source</div>
+      <div class="main-title">Painting the Landscape of<br><span>Internet Crimes Against Children</span><br>with Interpretive Tooling</div>
+      <div class="cover-subtitle">A ten-page visual briefing on sixteen years of U.S. ICAC enforcement - the problem, the institutions, the data, and what the record reveals at scale</div>
+    </div>
+
+    <div class="cover-rule"></div>
+
+    <div class="cover-content-row">
+
+      <div class="cover-left">
+        <div class="inside-label">What This Briefing Contains</div>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <div class="bullet-num">I.</div>
+            <div class="bullet-content">
+              <div class="bullet-title">The problem, a high level overview</div>
+              <div class="bullet-desc">20+ million CyberTips in 2024. Sextortion up 1,050%. AI-generated CSAM growing 10x in a single year. This briefing starts with the numbers - then shows the institutions, the technology, and the enforcement record behind them. Not to overwhelm. To orient.</div>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <div class="bullet-num">II.</div>
+            <div class="bullet-content">
+              <div class="bullet-title">What CaseLinker does and what it found across 3,000+ cases</div>
+              <div class="bullet-desc">3,000+ public ICAC case reports. 31 sources. 40 task forces. 20 structured case studies across four technological eras - from AOL chatrooms to AI-generated material. What investigators actually did. What worked. What the pattern looks like from the outside.</div>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <div class="bullet-num">III.</div>
+            <div class="bullet-content">
+              <div class="bullet-title">An open platform built for the people doing this work</div>
+              <div class="bullet-desc">Every tool, visualization, cluster interface, triage model, case study, landscape analysis, LLM interface, and underlying dataset have been made available. Built so the next researcher, policymaker, or computer scientist doesn't have to start from zero.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scale-block">
+          <div class="scale-label">CaseLinker at a Glance</div>
+          <div class="scale-grid">
+            <div class="scale-item"><div class="scale-num rust">3,000+</div><div class="scale-desc">Public ICAC case reports processed</div></div>
+            <div class="scale-item"><div class="scale-num">31</div><div class="scale-desc">Distinct sources across U.S. task forces and federal agencies</div></div>
+            <div class="scale-item"><div class="scale-num">27,150+</div><div class="scale-desc">Structured features extracted</div></div>
+            <div class="scale-item"><div class="scale-num rust">10</div><div class="scale-desc">Open analysis tools - visualization, clustering, triage, LLM, and more</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-right">
+        <div class="pages-label">Briefing Contents - 10 Pages</div>
+        <div class="pages-list">
+          <div class="page-item"><div class="page-num">01</div><div class="page-name"><strong>The Problem</strong> - Definition, scale, and six primary exploitation vectors</div></div>
+          <div class="page-item"><div class="page-num">02</div><div class="page-name"><strong>The Arms Race</strong> - Criminal infrastructure vs. enforcement capability</div></div>
+          <div class="page-item"><div class="page-num">03</div><div class="page-name"><strong>The Ecosystem</strong> - ICAC Task Force Program, NCMEC, DOJ CEOS</div></div>
+          <div class="page-item"><div class="page-num">04</div><div class="page-name"><strong>CaseLinker</strong> - Architecture, pipeline, sources, and credentials</div></div>
+          <div class="page-item"><div class="page-num">05</div><div class="page-name"><strong>The Framework</strong> - 10-dimensional analysis across every case</div></div>
+          <div class="page-item"><div class="page-num">06</div><div class="page-name"><strong>The 20 Case Studies</strong> - Selection methodology and era distribution</div></div>
+          <div class="page-item"><div class="page-num">07</div><div class="page-name"><strong>Era I &amp; II Findings</strong> - P2P and social media enforcement record</div></div>
+          <div class="page-item"><div class="page-num">08</div><div class="page-name"><strong>Era III &amp; IV Findings</strong> - Platform proliferation and generative AI</div></div>
+          <div class="page-item"><div class="page-num">09</div><div class="page-name"><strong>Aggregate Findings</strong> - Patterns visible only at scale</div></div>
+          <div class="page-item"><div class="page-num">10</div><div class="page-name"><strong>What This Enables</strong> - Use cases, open tools, and what comes next</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="bottom-rule-top"></div>
+  <div class="bottom-rule-thick"></div>
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      Mrinaal Ramachandran &nbsp;&nbsp;<span>Graduate Student &nbsp;·&nbsp; University of Massachusetts Amherst &nbsp;·&nbsp; Independent Research</span>
+    </div>
+    <div class="bottom-creds">
+      github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 1 - THE PROBLEM
+══════════════════════════════════════ -->
+<div class="page" id="p1">
+<div class="inner-page">
+  <div class="top-rule-thick"></div>
+  <div class="top-rule-thin"></div>
+
+  <div class="header-row">
+    <div>
+      <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 1 of 10</div>
+      <div class="page-title">Internet Crimes Against Children</div>
+      <div class="page-subtitle">Definition, scale, and the six primary vectors of online exploitation</div>
+    </div>
+    <div class="header-right">An interconnected, inter-disciplinary problem <br> with federal-state-local enforcement, platform involvement, <br> and continuous technological evolution spanning thirty plus years</div>
+  </div>
+
+  <div class="main-grid">
+    <div class="section-definition">
+      <div class="section-label"><span class="roman">I.</span> Definition &amp; Enforcement Structure</div>
+      <p class="body-text" style="margin-bottom:12px;">Internet Crimes Against Children (ICAC) encompasses everything from the possession, production, and distribution of child sexual abuse material (CSAM), to online grooming and enticement, to sextortion and hands-on contact offenses where digital evidence establishes the investigative record. These are not isolated incidents. They are crimes facilitated, scaled, and often coordinated through shared digital infrastructure.</p>
+      <p class="body-text">The United States federal response is organized through the ICAC Task Force Program, a federal-state-local network administered by OJJDP. Investigations are typically conducted at the state and local level, coordinated through regional task forces and the National Center for Missing and Exploited Children (NCMEC). FBI and HSI join on cases involving organized networks or international scope. Prosecution flows through state attorneys general, U.S. Attorney offices, and DOJ CEOS depending on case complexity and jurisdiction.</p>      <div class="infra-grid">
+        <div class="tile olive-accent"><div class="tile-label">Task Forces</div><div class="tile-value">61 regional units</div></div>
+        <div class="tile olive-accent"><div class="tile-label">Agencies</div><div class="tile-value">5,400+ across all 50 states</div></div>
+        <div class="tile rust-accent"><div class="tile-label">Reporting Backbone</div><div class="tile-value">NCMEC CyberTipline</div></div>
+        <div class="tile rust-accent"><div class="tile-label">Federal Prosecution</div><div class="tile-value">DOJ CEOS</div></div>
+      </div>
+      <p class="body-text" style="margin-bottom:14px;"> <br> The U.S. framework operates alongside a broader international ecosystem — Interpol, Internet Watch Foundation, and ECPAT International coordinate global cross-border efforts, while platforms are legally required to report CSAM to NCMEC under 18 U.S.C. § 2258A. Non-profits play a pivotal role: Thorn builds detection tools, the Tech Coalition drives platform accountability, C3P maintains global hash infrastructure, Project VIC International delivers victim identification tooling directly to ICAC task forces, and many more contribute to advocacy, policy, and survivor support. This briefing focuses on the U.S. ICAC enforcement record.</p>
+    </div>
+
+    <div class="section-scale">
+      <div class="section-label"><span class="roman">II.</span> Scale of the Problem</div>
+      <p class="body-text" style="margin-bottom:14px;"></p>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div class="stat-row"><div class="stat-number">20M+</div><div class="stat-desc">CyberTips received by NCMEC in 2024 alone - averaging more than 50,000 reports per day</div></div>
+        <p class="body-text" style="margin-bottom:14px;"></p>
+        <div class="stat-row"><div class="stat-number">1,050%</div><div class="stat-desc">Increase in sextortion reports to the FBI between 2021 and 2023. 70% of cases originate from organized groups outside the U.S.</div></div>
+        <p class="body-text" style="margin-bottom:14px;"> </p>
+        <div class="stat-row"><div class="stat-number">1 in 3</div><div class="stat-desc">CSAM victims are aged 7–10. 79% of imagery in this age group was self-generated via webcam or phone.</div></div>
+        <p class="body-text" style="margin-bottom:14px;"> </p>
+        <div class="stat-row"><div class="stat-number">10×</div><div class="stat-desc">Increase in AI-generated CSAM reports in a single year - 4,700 in 2023 to 67,000 in 2024. Over 50 AI tools operate with no safeguards.</div></div>
+      </div>
+
+      <p class="body-text" style="margin-bottom:14px;"> <br> </p>
+
+      <div style="background:var(--brown);border-left:4px solid var(--rust);padding:16px 18px;margin-top:14px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:15.5px;font-weight:700;font-style:italic;color:var(--cream);line-height:1.5;margin-bottom:10px;">"Every one of those reports lands on a desk. A human being has to decide what to do with it."</div>
+        <div style="font-size:13.5px;line-height:1.75;color:var(--tan);">NCMEC analysts review incoming CyberTips, routing them by jurisdiction and urgency to the right task force. Investigators open files, assesses the evidence, and build cases among a backlog of hundreds of potential tips. Forensic experts examine devices with terabytes of CSAM. At every step, a person is making a judgment call under volume pressure that never stops growing. And at the end of every one of those files is a child.</div>
+      </div>
+
+    </div>
+
+    <div class="section-vectors">
+      <div class="section-label"><span class="roman">III.</span> Six Primary Exploitation Vectors</div>
+      <div class="vectors-grid">
+        <div class="tile rust-top"><div class="tile-name">Grooming</div><div class="tile-body">Building trust and emotional connection with a child to facilitate exploitation. Online enticement reports increased 322% between 2019 and 2023.</div></div>
+        <div class="tile olive-top"><div class="tile-name">Sextortion</div><div class="tile-body">Using threats, coercion, or blackmail to force children into producing sexual content. 91% of victims are boys aged 14–17.</div></div>
+        <div class="tile brown-top"><div class="tile-name">CSAM</div><div class="tile-body">Production, distribution, and possession of child sexual abuse material. NCMEC received over 20.5 million CyberTipline reports in 2024.</div></div>
+        <div class="tile rust-top"><div class="tile-name">AI-Generated CSAM</div><div class="tile-body">Synthetic child sexual abuse imagery produced using generative AI - an emerging, rapidly scaling threat with limited legal precedent.</div></div>
+        <div class="tile olive-top"><div class="tile-name">Online Luring &amp; Social Engineering</div><div class="tile-body">Instagram, Snapchat, and Facebook appear in over 70% of online solicitation cases. 95% of victims did not report immediately.</div></div>
+        <div class="tile brown-top"><div class="tile-name">Criminal Networks &amp; Trafficking</div><div class="tile-body">Organized groups financing, coordinating, and scaling exploitation across jurisdictions - often targeting hundreds of victims simultaneously.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 2 - THE ARMS RACE
+══════════════════════════════════════ -->
+<div class="page" id="p2">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 2 of 10</div>
+  <div class="page-title">The Technology Landscape</div>
+  <div class="page-subtitle">The arms race between criminal infrastructure and enforcement capability - 2010 to 2026</div>
+
+  <div class="two-col">
+    <div class="col-offense">
+      <div class="col-header offense">Criminal Infrastructure</div>
+      <div class="tech-list">
+        <div class="tech-item offense-item"><div class="tech-name">Peer-to-Peer Networks</div><div class="tech-desc">Limewire, BitTorrent, and Ares enabled mass CSAM distribution through decentralized file sharing. Magnet links replaced direct file URLs, obscuring origin.</div></div>
+        <div class="tech-item offense-item"><div class="tech-name">Dark Web &amp; Tor</div><div class="tech-desc">Hidden services enabled anonymous CSAM communities, cryptocurrency payment, and coordination across jurisdictions with minimal exposure.</div></div>
+        <div class="tech-item offense-item"><div class="tech-name">Encrypted Messaging</div><div class="tech-desc">Signal, Telegram, and end-to-end encrypted platforms created forensic dead-ends. Group chats facilitated organized production and distribution rings.</div></div>
+        <div class="tech-item offense-item"><div class="tech-name">Social Media Platforms</div><div class="tech-desc">Instagram, Snapchat, Discord, and Facebook Messenger became primary grooming surfaces. Disappearing content and direct messaging lowered detection risk.</div></div>
+        <div class="tech-item offense-item"><div class="tech-name">Virtual Reality</div><div class="tech-desc">VR platforms introduced new grooming vectors - avatar-based interaction with minors in immersive, difficult-to-monitor environments.</div></div>
+        <div class="tech-item offense-item"><div class="tech-name">Generative AI</div><div class="tech-desc">Diffusion models and LLMs enabled synthetic CSAM at scale, AI-assisted grooming scripts, and deepfake exploitation material. 50+ tools with no safeguards.</div></div>
+        <div class="tech-item offense-item"><div class="tech-name">Cloud Storage &amp; Steganography</div><div class="tech-desc">Offenders used mainstream cloud platforms and concealment techniques to store and share material across device seizures.</div></div>
+      </div>
+    </div>
+    <div class="col-enforce">
+      <div class="col-header enforce">Enforcement Capability</div>
+      <div class="tech-list">
+        <div class="tech-item enforce-item"><div class="tech-name">P2P Investigative Tools</div><div class="tech-desc">Specialized software allowed undercover officers to identify IP addresses sharing known CSAM hashes across peer-to-peer networks in real time.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">PhotoDNA &amp; Hash Matching</div><div class="tech-desc">Microsoft's PhotoDNA enabled perceptual hashing of known CSAM, allowing platforms to detect and report material without human review of content.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">NCMEC CyberTipline</div><div class="tech-desc">Mandatory reporting pipeline for electronic service providers. 20M+ tips in 2024. Routes to task forces by jurisdiction for triage and investigation.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">Cellebrite &amp; Digital Forensics</div><div class="tech-desc">Mobile device extraction, deleted file recovery, and app artifact analysis have become licensed investigative tools across ICAC task forces.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">Magnet Forensics</div><div class="tech-desc">AXIOM and related platforms enabled cross-device analysis, timeline reconstruction, and cloud artifact recovery for complex multi-device cases.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">CAID &amp; Child Rescue Coalition</div><div class="tech-desc">The Child Abuse Image Database and CRC tools expanded known-hash libraries and provided intelligence on active P2P offenders across jurisdictions.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">Open Source Intelligence (OSINT)</div><div class="tech-desc">Investigators and analysts use publicly available social media, domain records, image metadata, and digital footprints to identify suspects and build cases through open-source data.</div></div>
+        <div class="tech-item enforce-item"><div class="tech-name">Undercover Operations</div><div class="tech-desc">Online undercover investigations, platform cooperation, and coordinated sting operations remained primary vectors for contact offense arrests.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-note">The enforcement record shows a consistent pattern: investigators adapt to each new platform surface, develop technical capability, and establish legal precedent, while offenders migrate to the next emerging technology. CaseLinker traces this co-evolution across 3,000+ case reports spanning 2010 to 2026.</div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 3 - THE ECOSYSTEM
+══════════════════════════════════════ -->
+<div class="page" id="p3">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 3 of 10</div>
+  <div class="page-title">The Enforcement Ecosystem</div>
+  <div class="page-subtitle">The institutional architecture behind U.S. Internet Crimes Against Children investigations</div>
+
+  <div class="numbers-row">
+    <div class="num-tile"><div class="num-big">61</div><div class="num-label">Regional ICAC Task Forces across all 50 states</div></div>
+    <div class="num-tile olive"><div class="num-big" style="color:var(--olive);">5,400+</div><div class="num-label">Law enforcement agencies participating in the Task Force Program</div></div>
+    <div class="num-tile"><div class="num-big">20M+</div><div class="num-label">CyberTips routed through NCMEC in 2024 alone</div></div>
+    <div class="num-tile olive"><div class="num-big" style="color:var(--olive);">50</div><div class="num-label">States with active ICAC task force coverage and federal coordination</div></div>
+  </div>
+
+  <div class="ecosystem-grid">
+    <div class="eco-tile rust"><div class="eco-name">OJJDP</div><div class="eco-body">Office of Juvenile Justice and Delinquency Prevention. Federal administrator of the ICAC Task Force Program. Provides funding, training standards, and program oversight to all 61 task forces.</div></div>
+    <div class="eco-tile"><div class="eco-name">ICAC Task Forces</div><div class="eco-body">61 regional units organized around a lead agency with participating local, county, and state partners. Responsible for investigation, arrest, prosecution support, and community outreach within their jurisdiction.</div></div>
+    <div class="eco-tile olive"><div class="eco-name">NCMEC CyberTipline</div><div class="eco-body">National Center for Missing and Exploited Children. Mandatory reporting destination for electronic service providers. Routes tips to the appropriate task force by IP geolocation for triage and action.</div></div>
+    <div class="eco-tile"><div class="eco-name">DOJ CEOS</div><div class="eco-body">Child Exploitation and Obscenity Section. Federal prosecution arm for the most complex ICAC cases - cross-jurisdictional rings, dark web operations, and cases requiring federal authority or international coordination.</div></div>
+    <div class="eco-tile rust"><div class="eco-name">State Attorneys General</div><div class="eco-body">State-level prosecution of ICAC cases. Attorneys General offices in most states maintain dedicated units - Georgia, Idaho, Texas, Vermont, and others are primary CaseLinker sources.</div></div>
+    <div class="eco-tile olive"><div class="eco-name">Platform Cooperation</div><div class="eco-body">Electronic service providers are legally required under 18 U.S.C. § 2258A to report apparent CSAM to NCMEC. Voluntary cooperation beyond legal minimums varies significantly by platform.</div></div>
+  </div>
+
+  <div class="pipeline" style="margin-top:16px;">
+    <div class="pipeline-title">The Traditional Investigation Pipeline</div>
+    <div class="pipeline-flow">
+      <div class="pipeline-step">Platform Detection<br><span style="font-size:9px;font-style:italic;">Hash match / report</span></div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">CyberTipline<br><span style="font-size:9px;font-style:italic;">NCMEC routing</span></div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">Task Force Triage<br><span style="font-size:9px;font-style:italic;">Priority assignment</span></div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">Investigation<br><span style="font-size:9px;font-style:italic;">Digital forensics</span></div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">Arrest &amp; Referral<br><span style="font-size:9px;font-style:italic;">State or federal</span></div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">Prosecution<br><span style="font-size:9px;font-style:italic;">AG / DOJ CEOS</span></div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step" style="background:var(--brown);color:var(--cream);">Conviction<br><span style="font-size:9px;font-style:italic;color:var(--tan);">Public record</span></div>
+    </div>
+  </div>
+
+  <!-- ENFORCEMENT OUTCOMES STATS -->
+  <div style="margin-top:14px;">
+    <div class="section-label"><span class="roman">·</span> Enforcement Outcomes - FY2024 National Results</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:8px;">
+      <div style="background:var(--parchment);border:1px solid var(--tan);border-top:3px solid var(--rust);padding:10px 12px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--rust);line-height:1;margin-bottom:3px;">203,467</div>
+        <div style="font-size:10px;color:var(--brown-mid);line-height:1.4;">Investigations conducted by ICAC task forces in FY2024</div>
+      </div>
+      <div style="background:var(--parchment);border:1px solid var(--tan);border-top:3px solid var(--olive);padding:10px 12px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--olive);line-height:1;margin-bottom:3px;">12,600+</div>
+        <div style="font-size:10px;color:var(--brown-mid);line-height:1.4;">Offenders arrested by ICAC task forces in FY2024</div>
+      </div>
+      <div style="background:var(--parchment);border:1px solid var(--tan);border-top:3px solid var(--brown-mid);padding:10px 12px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--brown-mid);line-height:1;margin-bottom:3px;">46,000</div>
+        <div style="font-size:10px;color:var(--brown-mid);line-height:1.4;">Law enforcement officers and prosecutors trained in FY2024</div>
+      </div>
+      <div style="background:var(--parchment);border:1px solid var(--tan);border-top:3px solid var(--rust);padding:10px 12px;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--rust);line-height:1;margin-bottom:3px;">$39.9M</div>
+        <div style="font-size:10px;color:var(--brown-mid);line-height:1.4;">Federal funding supporting the ICAC Task Force Program in FY2024</div>
+      </div>
+    </div>
+    <div style="background:var(--parchment);border:1px solid var(--tan);border-left:3px solid var(--rule);padding:8px 12px;font-size:10px;color:var(--brown-light);font-style:italic;line-height:1.5;">
+      Source: OJJDP Internet Crimes Against Children Task Force Program, FY2024. <br> State-level data varies - Indiana ICAC reported 30,000 CyberTips in 2025, up 38% from 2024. Silicon Valley ICAC (2024): 429 arrests, 68 children rescued from ongoing abuse, 88 child survivors identified.
+    </div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:12px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 4 - WHAT IS CASELINKER
+══════════════════════════════════════ -->
+<div class="page" id="p4">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 4 of 10</div>
+  <div class="page-title">CaseLinker</div>
+  <div class="page-subtitle">An open-source system for cross-case analysis of Internet Crimes Against Children reports</div>
+
+  <div class="top-row">
+    <div class="top-left">
+      <div class="section-label"><span class="roman">I.</span> What It Is</div>
+      <p class="body-text" style="margin-bottom:11px;">CaseLinker ingests publicly available, redacted ICAC case reports - press releases, annual reports, and court-adjacent documents - and transforms them into structured feature vectors for cross-case pattern analysis. It is not a database. It is an interpretive research infrastructure.</p>
+      <p class="body-text">Built by a single graduate student in Computer Science at UMass Amherst, operating independently under an HRPO determination and designed specifically for this field. No private data. No identifiable victim information. Every record is derived from documents already in the public domain.</p>
+      <div class="cred-grid">
+        <div class="tile rust-accent"><div class="tile-label rust">Reports #1-4</div><div class="tile-value" style="font-size:11px;"><a href="https://arxiv.org/pdf/2603.18020" style="color:var(--rust);text-decoration:none;" target="_blank">1. Initial release</a><br><a href="https://mrinaalr.github.io/website/CaseLinker-%20Interpretable%20ML%20Approaches%20for%20Analyzing%20Internet%20Crimes%20Against%20Children%20Reports.pdf" style="color:var(--rust);text-decoration:none;" target="_blank">2. Interpretable ML</a><br><a href="https://mrinaalr.github.io/website/Scaling.pdf" style="color:var(--rust);text-decoration:none;" target="_blank">3. Scaling</a><br><a href="https://mrinaalr.github.io/website/Framework.pdf" style="color:var(--rust);text-decoration:none;" target="_blank">4. Framework</a></div></div>        <div class="tile rust-accent"><div class="tile-label rust">Ethics</div><div class="tile-value" style="font-size:11px;">This research does not contain private or identifiable information under federal regulations [45 CFR 46.102(f)(1), (2)]. UMass HRPO #7668.</div></div>
+        <div class="tile olive-accent"><div class="tile-label">License</div><div class="tile-value" style="font-size:12px;">MIT - fully open source</div></div>
+        <div class="tile olive-accent"><div class="tile-label">Deployment</div><div class="tile-value" style="font-size:12px;">Live on Railway, zero retention</div></div>
+      </div>
+    </div>
+    <div class="top-right">
+      <div class="section-label"><span class="roman">II.</span> Scale</div>
+      <div style="display:flex;flex-direction:column;gap:7px;">
+        <div class="stat-row"><div class="stat-number">3,000+</div><div class="stat-desc">Public ICAC case reports processed across U.S. task forces and agencies</div></div>
+        <p class="body-text" style="margin-bottom:14px;"> </p>
+        <div class="stat-row"><div class="stat-number">31</div><div class="stat-desc">Distinct sources - task force annual reports, AG offices, DOJ CEOS, NCMEC</div></div>
+        <p class="body-text" style="margin-bottom:14px;"> </p>
+        <div class="stat-row"><div class="stat-number">27,150+</div><div class="stat-desc">Structured features extracted across the 10-dimensional analysis framework</div></div>
+        <p class="body-text" style="margin-bottom:14px;"> </p>
+        <div class="stat-row"><div class="stat-number">40</div><div class="stat-desc">Task forces represented across case corpus by explicit agency match. 1,858 unique law enforcement agencies represented.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-bottom:10px;"><span class="roman">III.</span> The Pipeline - From Press Release to Feature Vector</div>
+  <div class="pipeline-row">
+    <div class="pipe-step"><div class="pipe-step-num">01</div><div class="pipe-step-name">Ingestion</div><div class="pipe-step-desc">Public case documents collected from 31 sources - AG offices, task force reports, DOJ CEOS releases</div></div>
+    <div class="pipe-step"><div class="pipe-step-num">02</div><div class="pipe-step-name">Parsing</div><div class="pipe-step-desc">Structured extraction of case metadata, charges, platforms, agencies, outcomes, and temporal markers</div></div>
+    <div class="pipe-step"><div class="pipe-step-num">03</div><div class="pipe-step-name">Feature Extraction</div><div class="pipe-step-desc">10-dimensional framework applied - 27,150+ features across offense, platform, demographics, and investigation type</div></div>
+    <div class="pipe-step highlight"><div class="pipe-step-num">04</div><div class="pipe-step-name">Analysis</div><div class="pipe-step-desc">Cross-case clustering, triage scoring, similarity search, temporal trend analysis, and geographic distribution</div></div>
+    <div class="pipe-step"><div class="pipe-step-num">05</div><div class="pipe-step-name">Visualization</div><div class="pipe-step-desc">Interactive deployment - investigators, researchers, and policymakers explore patterns without touching raw case text</div></div>
+  </div>
+
+  <div class="section-label" style="margin-bottom:9px;"><span class="roman">IV.</span> Selected Sources</div>
+  <div class="sources-grid">
+    <div class="source-tile"><strong>AZICAC</strong>Annual case reports - primary longitudinal source, 2011–2024</div>
+    <div class="source-tile"><strong>DOJ CEOS</strong>Federal prosecution releases - complex rings, dark web, cross-jurisdictional</div>
+    <div class="source-tile"><strong>NCMEC</strong>CyberTipline publications and case summaries</div>
+    <div class="source-tile"><strong>Georgia BIA / CEACC</strong>GBI ICAC press releases - extensive state-level record</div>
+    <div class="source-tile"><strong>Kentucky State Police</strong>207 cases - largest single task force presence in corpus</div>
+    <div class="source-tile"><strong>Michigan State Police</strong>ICAC Newsroom - structured press release archive</div>
+    <div class="source-tile"><strong>New Jersey AG</strong>ICAC-related prosecution releases</div>
+    <div class="source-tile"><strong>+ 24 additional sources</strong>TX, VT, SC, IL, OH, PA, NY, LA, UT, WY, NC, SD, WA, MS, and more</div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 5 - THE 10-DIMENSIONAL FRAMEWORK
+══════════════════════════════════════ -->
+<div class="page" id="p5">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 5 of 10</div>
+  <div class="page-title">The 10-Dimensional Analysis Framework</div>
+  <div class="page-subtitle">Every case in CaseLinker is analyzed across ten structured dimensions - enabling cross-case comparison invisible in any single report</div>
+
+  <div class="dim-grid">
+    <div class="dim-tile"><div class="dim-num">01</div><div class="dim-name">Offense &amp; Severity Patterns</div><div class="dim-desc">Charge type, severity classification, offense count, and the relationship between online and contact offenses in each case.</div></div>
+    <div class="dim-tile"><div class="dim-num">02</div><div class="dim-name">Platform Involvement</div><div class="dim-desc">Which platforms appear in each case - as grooming surfaces, distribution channels, or communication infrastructure for offenders.</div></div>
+    <div class="dim-tile"><div class="dim-num">03</div><div class="dim-name">Victim Demographics</div><div class="dim-desc">Age, gender, and vulnerability context where available in public records - structured to enable aggregate demographic analysis without identifying individuals.</div></div>
+    <div class="dim-tile"><div class="dim-num">04</div><div class="dim-name">Perpetrator Demographics</div><div class="dim-desc">Age, occupation, and relationship to victim - including patterns of authority-position offending and multi-victim perpetrators.</div></div>
+    <div class="dim-tile"><div class="dim-num">05</div><div class="dim-name">Investigation Type</div><div class="dim-desc">How the case originated - CyberTip, undercover operation, parental report, platform referral, or proactive P2P investigation.</div></div>
+    <div class="dim-tile"><div class="dim-num">06</div><div class="dim-name">Prosecutorial Outcomes</div><div class="dim-desc">Charges filed, plea agreements, trial outcomes, and sentencing - enabling analysis of prosecution success rates by offense type and jurisdiction.</div></div>
+    <div class="dim-tile"><div class="dim-num">07</div><div class="dim-name">Agency Coordination</div><div class="dim-desc">Which agencies participated - local, state, federal, international - and how coordination patterns correlate with case complexity and outcome.</div></div>
+    <div class="dim-tile"><div class="dim-num">08</div><div class="dim-name">Temporal Trends</div><div class="dim-desc">Case distribution over time - surfacing how volume, offense type, and platform involvement have shifted across 2010–2026.</div></div>
+    <div class="dim-tile"><div class="dim-num">09</div><div class="dim-name">Geographic Distribution</div><div class="dim-desc">Jurisdiction, task force, and state-level mapping - revealing geographic clustering and enforcement capacity variation across the U.S.</div></div>
+    <div class="dim-tile"><div class="dim-num">10</div><div class="dim-name">Report Similarity and Triage</div><div class="dim-desc">Algorithmic triage scores by severity and investigative priority, and similarity clustering.</div></div>  </div>
+
+  <div class="framework-note" style="margin-top:14px;">The 10-dimensional framework is the methodological core of CaseLinker. It enables the kind of cross-case, cross-jurisdiction, cross-era analysis that has never been systematically applied to public ICAC enforcement data - not because the data didn't exist, but because no structured pipeline existed to make it navigable. That is what this system provides.</div>
+
+  <!-- PERFECT CASE BLOCK -->
+  <div style="margin-top:14px;">
+    <div class="section-label"><span class="roman">·</span> Example of a Fully Extracted Case Record &nbsp;<span style="color:var(--brown-light);font-style:italic;text-transform:none;letter-spacing:0;">tbi_icac_2022_040 : highest coverage score across 2,532 cases</span></div>
+    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:8px;">
+
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="background:var(--brown);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+          <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--cream);letter-spacing:0.06em;">TBI ICAC &nbsp;·&nbsp; Operation Protecting Tomorrow &nbsp;·&nbsp; 2022</div>
+          <div style="font-size:9px;color:var(--tan);font-family:'Libre Baskerville',serif;letter-spacing:0.08em;">tbi_icac_2022_040</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;">
+          <div class="tile rust-accent"><div class="tile-label rust">Victim Count</div><div class="tile-value">22</div></div>
+          <div class="tile rust-accent"><div class="tile-label rust">Evidence</div><div class="tile-value">264,000 images</div></div>
+          <div class="tile rust-accent"><div class="tile-label rust">Min. Victim Age</div><div class="tile-value">11 years</div></div>
+          <div class="tile olive-accent"><div class="tile-label">Platforms</div><div class="tile-value" style="font-size:11px;">Instagram, Snapchat, social media</div></div>
+          <div class="tile olive-accent"><div class="tile-label">Investigation</div><div class="tile-value" style="font-size:11px;">Undercover + CyberTipline</div></div>
+          <div class="tile olive-accent"><div class="tile-label">Perpetrators</div><div class="tile-value" style="font-size:11px;">10 individuals, ages 28–53</div></div>
+        </div>
+        <div class="tile brown-accent" style="font-size:10.5px;line-height:1.6;color:var(--brown-mid);">
+          <strong style="color:var(--brown);">Severity:</strong> sexual_abuse, under_12, multiple_perpetrators &nbsp;·&nbsp; <strong style="color:var(--brown);">Topics:</strong> multi_state, CSAM, family &nbsp;·&nbsp; <strong style="color:var(--brown);">Locations:</strong> Tennessee, Alabama, Murfreesboro, Texarkana, Rutherford County
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div class="tile brown-accent" style="padding:9px 11px;">
+          <div class="tile-label brown">Agencies Involved (23)</div>
+          <div style="font-size:10.5px;line-height:1.6;color:var(--brown-mid);margin-top:3px;">Tennessee Bureau of Investigation, ICAC Task Force, FBI, Homeland Security Investigations, NCMEC, United States Secret Service, and 17 county sheriffs offices and police departments across TN, AL, TX, and MI</div>
+        </div>
+        <div class="tile olive-accent" style="padding:9px 11px;">
+          <div class="tile-label">10 Dimensions Populated</div>
+          <div style="font-size:10px;line-height:1.65;color:var(--brown-mid);margin-top:3px;">
+            Offense severity &nbsp;·&nbsp; Evidence Volume &nbsp;·&nbsp; Platform vectors &nbsp;·&nbsp; Victim demographics &nbsp;·&nbsp; Perpetrator demographics &nbsp;·&nbsp; Investigation type &nbsp;·&nbsp; Prosecution status &nbsp;·&nbsp; Agency coordination &nbsp;·&nbsp; Temporal markers &nbsp;·&nbsp; Geographic NER &nbsp;·&nbsp;
+          </div>
+        </div>
+        <div style="background:var(--parchment);border:1px solid var(--tan);border-left:3px solid var(--rule);padding:8px 11px;font-size:10px;color:var(--brown-light);font-style:italic;line-height:1.5;">
+          Prosecution outcome reflects charges filed during booking at arrest stage.  <br>
+          Source: <a href="https://tbinewsroom.com/2024/05/20/tbis-operation-protecting-tomorrow-yields-arrests-identifies-two-dozen-child-online-sexual-exploitation-sextortion-victims/" style="color:var(--brown-light);text-decoration:underline;" target="_blank">https://tbinewsroom.com/2024/05/20/tbis-operation-protecting-tomorrow-yields-arrests-identifies-two-dozen-child-online-sexual-exploitation-sextortion-victims/          </a>        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 6 - THE 20 CASE STUDIES
+══════════════════════════════════════ -->
+<div class="page" id="p6">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 6 of 10</div>
+  <div class="page-title">The 20 Case Studies</div>
+  <div class="page-subtitle">How 20 cases were selected from 3,000+ - the stratification logic and selection methodology</div>
+
+  <div class="selection-grid">
+    <div class="sel-left">
+      <div class="section-label"><span class="roman">I.</span> Selection Methodology</div>
+      <p class="body-text" style="margin-bottom:12px;">From a corpus of 3,000+ public ICAC case reports, 20 structured case studies were selected through a stratified methodology designed to maximize analytical coverage across technological eras, offense types, platform surfaces, geographies, and investigation approaches.</p>
+      <p class="body-text" style="margin-bottom:12px;">No case was selected for severity or notoriety. Cases were selected because they illuminate something about how the crime, the technology, or the enforcement response worked at a particular moment - and what that reveals about the broader pattern.</p>
+      <div class="criteria-list">
+        <div class="criteria-item"><div class="criteria-num">1</div><div class="criteria-text"><strong>Era representation:</strong> Five case studies per technological era - ensuring longitudinal coverage from 2010 through 2026.</div></div>
+        <div class="criteria-item olive"><div class="criteria-num" style="color:var(--olive);">2</div><div class="criteria-text"><strong>Platform diversity:</strong> Cases span P2P, social media, encrypted messaging, gaming, VR, and AI-assisted platforms.</div></div>
+        <div class="criteria-item"><div class="criteria-num">3</div><div class="criteria-text"><strong>Geographic distribution:</strong> Multiple states and jurisdictions represented, including federal CEOS cases.</div></div>
+        <div class="criteria-item olive"><div class="criteria-num" style="color:var(--olive);">4</div><div class="criteria-text"><strong>Investigation type:</strong> Mix of CyberTip-origin, undercover, proactive P2P, parental report, and platform referral cases.</div></div>
+        <div class="criteria-item"><div class="criteria-num">5</div><div class="criteria-text"><strong>Analytical value:</strong> Each case must illuminate something about the co-evolution of exploitation and enforcement that aggregate statistics cannot.</div></div>
+      </div>
+    </div>
+    <div class="sel-right">
+      <div class="section-label"><span class="roman">II.</span> Five Analytical Dimensions Per Case</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+        <div class="tile rust-accent"><div class="tile-label rust">Dimension A</div><div class="tile-value" style="font-size:12px;">Platform Context</div><div class="tile-body" style="margin-top:3px;">Which platforms were used, how, and why they enabled this particular offense.</div></div>
+        <div class="tile olive-accent"><div class="tile-label">Dimension B</div><div class="tile-value" style="font-size:12px;">Perpetrator Methodology</div><div class="tile-body" style="margin-top:3px;">How the offender operated - grooming approach, technical methods, individual or group involvement.</div></div>
+        <div class="tile rust-accent"><div class="tile-label rust">Dimension C</div><div class="tile-value" style="font-size:12px;">Investigative Approach</div><div class="tile-body" style="margin-top:3px;">How investigators identified, built, and executed the case. What tools and authorities were used.</div></div>
+        <div class="tile olive-accent"><div class="tile-label">Dimension D</div><div class="tile-value" style="font-size:12px;">Prosecutorial Outcome</div><div class="tile-body" style="margin-top:3px;">Charges, plea, trial, and sentencing - what the legal record shows about how the system responded.</div></div>
+        <div class="tile brown-accent"><div class="tile-label brown">Dimension E</div><div class="tile-value" style="font-size:12px;">Relationship to the Technological Era</div><div class="tile-body" style="margin-top:3px;">What this case reveals about the broader landscape of its moment - and what it predicts about what came next.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><span class="roman">III.</span> Distribution Across Four Technological Eras</div>
+  <div class="era-distribution">
+    <div class="era-tile"><div class="era-label">Era I</div><div class="era-name">Early Internet &amp; Peer-to-Peer</div><div class="era-years">2010–2014</div><div class="era-cases">5</div><div class="era-cases-label">case studies</div><div class="era-platforms">P2P networks, IRC, early social platforms, file sharing</div></div>
+    <div class="era-tile"><div class="era-label">Era II</div><div class="era-name">Social Media &amp; Mobile-First</div><div class="era-years">2015–2018</div><div class="era-cases">5</div><div class="era-cases-label">case studies</div><div class="era-platforms">Facebook, Snapchat, Instagram, smartphone proliferation</div></div>
+    <div class="era-tile"><div class="era-label">Era III</div><div class="era-name">Platform Proliferation</div><div class="era-years">2019–2022</div><div class="era-cases">5</div><div class="era-cases-label">case studies</div><div class="era-platforms">Discord, gaming platforms, encrypted messaging, dark web</div></div>
+    <div class="era-tile"><div class="era-label">Era IV</div><div class="era-name">Generative AI</div><div class="era-years">2023–2026</div><div class="era-cases">5</div><div class="era-cases-label">case studies</div><div class="era-platforms">AI-generated CSAM, deepfakes, LLM grooming, VR</div></div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 7 - ERA I & II FINDINGS
+══════════════════════════════════════ -->
+<div class="page" id="p7">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 7 of 10</div>
+  <div class="page-title">Era I &amp; II Findings</div>
+  <div class="page-subtitle">What the case record reveals about exploitation and enforcement across the P2P and social media eras</div>
+
+  <div class="era-findings-grid">
+    <div class="era-col-1">
+      <div class="era-col-header era1">Era I - Early Internet &amp; P2P &nbsp;(2010–2014)</div>
+      <div class="finding-list">
+        <div class="finding-item"><strong>P2P as the dominant vector.</strong> Peer-to-peer file sharing networks were the primary infrastructure for CSAM distribution. Investigators developed proactive identification techniques - matching IP addresses sharing known hash values - that drove the majority of arrests.</div>
+        <div class="finding-item"><strong>Hash matching established as standard.</strong> PhotoDNA and known-hash libraries became the foundation of platform cooperation. Cases in this era frequently originated from platform CyberTip reports triggered by hash matches.</div>
+        <div class="finding-item"><strong>Multi-device complexity emerged early.</strong> Offenders maintained large collections across multiple devices and external drives. Digital forensics capacity - and investigator training - became the limiting factor in prosecution throughput.</div>
+        <div class="finding-item"><strong>Geographic isolation of task forces.</strong> Cases in this era rarely crossed jurisdictional lines. The federal coordination infrastructure was present but rarely activated outside of the most complex ring investigations.</div>
+        <div class="finding-item"><strong>Prosecution rates were high.</strong> Cases originating from proactive P2P investigation had strong forensic chains and high conviction rates. The evidence - IP logs, file manifests, device contents - was difficult to contest.</div>
+      </div>
+    </div>
+    <div class="era-col-2">
+      <div class="era-col-header era2">Era II - Social Media &amp; Mobile-First &nbsp;(2015–2018)</div>
+      <div class="finding-list">
+        <div class="finding-item era2"><strong>Platform surface expanded dramatically.</strong> Facebook, Snapchat, and Instagram became primary grooming infrastructure. Direct messaging, disappearing content, and pseudonymous accounts lowered detection risk for offenders significantly.</div>
+        <div class="finding-item era2"><strong>Contact offense rate increased.</strong> Social media grooming led to higher rates of in-person contact offenses compared to the P2P era. Online enticement became the dominant charge type alongside CSAM possession.</div>
+        <div class="finding-item era2"><strong>Parental reporting gaps became critical.</strong> A significant portion of Era II arrests originated from NCMEC rather than parental discovery of inappropriate contact - a pattern that persists and accelerates in later eras.</div>
+        <div class="finding-item era2"><strong>Platform cooperation became uneven.</strong> Some platforms proactively reported; others required legal process. The gap between voluntary cooperation and legal minimums became a visible enforcement challenge.</div>
+        <div class="finding-item era2"><strong>Undercover operations scaled.</strong> Task forces developed structured undercover protocols for social media platforms. Sting-origin cases became a consistent and legally defensible investigation pathway in this era.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><span class="roman">·</span> Key Case Study Callouts</div>
+  <div class="case-callouts">
+    <div class="callout-tile"><div class="callout-label">Era I - Case Study</div><div class="callout-title">AIM / P2P Network Investigation (2011)</div><div class="callout-body">Proactive P2P investigation identifying IP addresses sharing known CSAM hashes. Demonstrates the investigative pipeline that drove the majority of Era I arrests - and its dependence on hash-matched known material.</div></div>
+    <div class="callout-tile"><div class="callout-label">Era II - Case Study</div><div class="callout-title">[Era II Case Study Title]</div><div class="callout-body">[Brief description of key investigative or enforcement insight this case illuminates - platform surface, methodology, outcome, and what it reveals about its technological moment.]</div></div>
+    <div class="callout-tile"><div class="callout-label">Era II - Case Study</div><div class="callout-title">[Era II Case Study Title]</div><div class="callout-body">[Brief description of key investigative or enforcement insight this case illuminates - platform surface, methodology, outcome, and what it reveals about its technological moment.]</div></div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 8 - ERA III & IV FINDINGS
+══════════════════════════════════════ -->
+<div class="page" id="p8">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 8 of 10</div>
+  <div class="page-title">Era III &amp; IV Findings</div>
+  <div class="page-subtitle">Platform proliferation, generative AI, and the investigative challenges enforcement is still navigating</div>
+
+  <div class="era-findings-grid">
+    <div class="era-col-1">
+      <div class="era-col-header era3">Era III - Platform Proliferation &nbsp;(2019–2022)</div>
+      <div class="finding-list">
+        <div class="finding-item era3"><strong>Multi-platform infrastructure as the dominant new surface.</strong> Gaming-adjacent platforms - Discord in particular - became primary infrastructure for CSAM distribution networks, organized production rings, and grooming operations targeting younger male victims.</div>
+        <div class="finding-item era3"><strong>Organized ring complexity increased sharply.</strong> Era III cases more frequently involved multi-offender networks coordinating across platforms - one surface for recruitment, another for distribution, another for payment.</div>
+        <div class="finding-item era3"><strong>Encryption created persistent forensic gaps.</strong> End-to-end encrypted platforms appeared in an increasing proportion of cases as infrastructure that investigators could identify but not always penetrate.</div>
+        <div class="finding-item era3"><strong>Federal involvement expanded.</strong> The complexity of cross-platform, cross-jurisdiction ring investigations drove higher rates of DOJ CEOS involvement and federal prosecution in this era.</div>
+        <div class="finding-item era3"><strong>Sextortion emerged as a mass-scale offense.</strong> Financially motivated sextortion - organized groups targeting teenage boys - scaled dramatically, driven by overseas criminal networks operating with near-impunity.</div>
+      </div>
+    </div>
+    <div class="era-col-2">
+      <div class="era-col-header era4">Era IV - Generative AI &nbsp;(2023–2026)</div>
+      <div class="finding-list">
+        <div class="finding-item era4"><strong>AI-generated CSAM as a distinct legal challenge.</strong> The Idaho prosecution under 18-1507C represents the first structured enforcement response to AI-generated material in the state. Legal frameworks are still forming - and varying significantly by state.</div>
+        <div class="finding-item era4"><strong>VR as an emerging grooming surface.</strong> The Oculus kidnapping case demonstrates that avatar-based platforms present genuine physical safety risks - not just digital harm - when offenders use them to establish real-world access to victims.</div>
+        <div class="finding-item era4"><strong>Detection infrastructure is lagging.</strong> Hash-based detection fails entirely on synthetic material. Classifier-based detection of AI-generated CSAM is nascent. Investigators are encountering material they cannot definitively categorize with existing tools.</div>
+        <div class="finding-item era4"><strong>Volume pressure on investigators is acute.</strong> 67,000 AI-CSAM reports in 2024 against an investigative infrastructure built for a fraction of that volume. Triage is now the critical bottleneck.</div>
+        <div class="finding-item era4"><strong>Enforcement is adapting.</strong> Statutes are being drafted and passed. Prosecutors are building novel legal arguments. Investigators are developing new technical approaches. The enforcement record shows adaptation - it has always shown adaptation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><span class="roman">·</span> Key Case Study Callouts</div>
+  <div class="case-callouts">
+    <div class="callout-tile"><div class="callout-label">Era III - Case Study</div><div class="callout-title">Discord CSAM Server Investigation</div><div class="callout-body">A structured CSAM distribution network operating across Discord servers - demonstrating how gaming-adjacent platforms became primary infrastructure for organized exploitation rings in the platform proliferation era.</div></div>
+    <div class="callout-tile"><div class="callout-label">Era IV - Case Study</div><div class="callout-title">Idaho AI-CSAM Prosecution (2024)</div><div class="callout-body">First major prosecution under Idaho's visual representation statute (18-1507C). Establishes the legal and investigative framework for AI-generated CSAM cases - and the evidentiary challenges that remain unresolved.</div></div>
+    <div class="callout-tile"><div class="callout-label">Era IV - Case Study</div><div class="callout-title">Oculus VR Kidnapping Case</div><div class="callout-body">A VR platform used to establish contact with a minor that led to a physical kidnapping attempt. Demonstrates that avatar-based environments present real-world physical risk - not just digital harm - when monitoring is absent.</div></div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 9 - AGGREGATE FINDINGS
+══════════════════════════════════════ -->
+<div class="page" id="p9">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 9 of 10</div>
+  <div class="page-title">Aggregate Findings</div>
+  <div class="page-subtitle">Patterns across 3,000+ cases that are invisible in any single report, jurisdiction, or year</div>
+
+  <div class="agg-top">
+    <div class="agg-big-tile"><div class="agg-big-num">[X]%</div><div class="agg-big-label">of cases in corpus involve CSAM possession or distribution as a primary or secondary charge</div><div class="agg-big-sub">Charge concentration has remained stable across eras even as platform surfaces shifted dramatically</div></div>
+    <div class="agg-big-tile"><div class="agg-big-num">[X]%</div><div class="agg-big-label">of cases result in guilty plea or conviction across the full corpus</div><div class="agg-big-sub">Digital evidence chains - device forensics, IP logs, platform records - produce consistently strong prosecution outcomes</div></div>
+    <div class="agg-big-tile"><div class="agg-big-num">[X]</div><div class="agg-big-label">distinct platforms appear across the corpus as grooming, distribution, or communication surfaces</div><div class="agg-big-sub">Platform concentration is high - a small number of surfaces appear in the majority of cases across all eras</div></div>
+  </div>
+
+  <div class="agg-mid">
+    <div class="agg-mid-left">
+      <div class="section-label"><span class="roman">I.</span> Temporal Patterns</div>
+      <div class="finding-list">
+        <div class="finding-item"><strong>Case volume increased steadily</strong> from 2010 through 2022, with a sharp acceleration beginning in 2023 corresponding to the generative AI era and the sextortion surge.</div>
+        <div class="finding-item"><strong>Offense type shifted across eras.</strong> CSAM possession dominated early years. Contact offenses and enticement increased sharply with social media proliferation. Sextortion emerged as a distinct category in Era III.</div>
+        <div class="finding-item"><strong>Investigation origin diversified.</strong> CyberTip-origin cases remained stable as a proportion of the corpus while undercover and proactive investigation cases grew in absolute terms.</div>
+        <div class="finding-item"><strong>Federal involvement trended upward</strong> - particularly for cases involving organized rings, cross-platform operations, and international offender networks.</div>
+      </div>
+    </div>
+    <div class="agg-mid-right">
+      <div class="section-label"><span class="roman">II.</span> Geographic &amp; Jurisdictional Patterns</div>
+      <div class="finding-list">
+        <div class="finding-item olive"><strong>Enforcement output is highly concentrated.</strong> A small number of task forces - Kentucky, New Jersey, Georgia, New York, Arizona - account for a disproportionate share of the public case record, reflecting both enforcement activity and reporting transparency.</div>
+        <div class="finding-item olive"><strong>Reporting transparency varies dramatically.</strong> Some states publish detailed press releases for every arrest. Others publish nothing. The corpus reflects enforcement output and reporting practice simultaneously.</div>
+        <div class="finding-item olive"><strong>Multi-jurisdiction cases are underrepresented</strong> in state-level public records. Federal CEOS releases capture the most complex cases; state AG offices capture the volume.</div>
+        <div class="finding-item olive"><strong>Rural enforcement gaps are visible in the data.</strong> Task force coverage and prosecution output are geographically uneven in ways that correlate with agency size and resources, not offense prevalence.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label"><span class="roman">III.</span> Platform Concentration - Top Platforms Across Corpus</div>
+  <div class="agg-bottom">
+    <div class="platform-tile"><div class="platform-name">Facebook / Meta</div><div class="platform-stat">Appears in [X]% of social-media-origin cases. Dominant in Era II, persistent through Era III.</div></div>
+    <div class="platform-tile"><div class="platform-name">Snapchat</div><div class="platform-stat">Disappearing content and direct messaging made it a primary grooming surface across Era II and III.</div></div>
+    <div class="platform-tile"><div class="platform-name">Discord</div><div class="platform-stat">Emerged as the dominant organized-ring infrastructure platform in Era III. Server-based organization enabled ring coordination at scale.</div></div>
+    <div class="platform-tile"><div class="platform-name">Kik Messenger</div><div class="platform-stat">Appeared frequently in Era II cases - pseudonymous messaging with limited platform cooperation created persistent enforcement challenges.</div></div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 10 - WHAT THIS ENABLES
+══════════════════════════════════════ -->
+<div class="page" id="p10">
+<div class="inner-page">
+  <div class="top-rule-thick"></div><div class="top-rule-thin"></div>
+  <div class="page-eyebrow">CaseLinker Report #5 &nbsp;·&nbsp; Page 10 of 10</div>
+  <div class="page-title">What This Enables</div>
+  <div class="page-subtitle">Who CaseLinker is built for - and what becomes possible when the enforcement record is made legible at scale</div>
+
+  <div class="use-case-grid">
+    <div class="uc-left">
+      <div class="section-label"><span class="roman">I.</span> Audiences &amp; Use Cases</div>
+      <div class="audience-list">
+        <div class="audience-tile"><div class="audience-name">ICAC Investigators &amp; Task Force Commanders</div><div class="audience-desc">Cross-jurisdiction comparison of successful investigations. Pattern identification across offense types, platforms, and investigation approaches. Triage scoring for CyberTip-volume environments. A searchable record of what has worked - and how.</div></div>
+        <div class="audience-tile"><div class="audience-name">Researchers &amp; Forensic Psychologists</div><div class="audience-desc">Long-horizon systemic analysis of how internet-mediated exploitation has evolved. A structured dataset for empirical research on enforcement effectiveness, platform responsibility, and offender methodology - built on public records.</div></div>
+        <div class="audience-tile"><div class="audience-name">Policymakers &amp; Legislative Staff</div><div class="audience-desc">An evidence base for technology policy, platform regulation, and enforcement resource allocation - grounded in the actual record of what cases look like, how they are investigated, and how enforcement succeeds.</div></div>
+        <div class="audience-tile"><div class="audience-name">Computer Scientists &amp; Technologists</div><div class="audience-desc">A domain entry point into one of the most technically complex and consequential problems in digital safety - with a structured dataset, an open pipeline, and a clear map of where technical contribution is actually needed.</div></div>
+      </div>
+    </div>
+    <div class="uc-right">
+      <div class="section-label"><span class="roman">II.</span> Open Tools - Available Now</div>
+      <div class="tools-grid">
+        <div class="tool-tile"><div class="tool-name">Visualization</div><div class="tool-desc">Interactive case corpus exploration across all 10 dimensions</div></div>
+        <div class="tool-tile"><div class="tool-name">Clustering</div><div class="tool-desc">Algorithmic case family identification across the full corpus</div></div>
+        <div class="tool-tile"><div class="tool-name">Triage</div><div class="tool-desc">Random Forest classifier - 93%+ accuracy - for case priority scoring</div></div>
+        <div class="tool-tile"><div class="tool-name">Case Studies</div><div class="tool-desc">All 20 structured case studies with full analytical dimensions</div></div>
+        <div class="tool-tile"><div class="tool-name">Search</div><div class="tool-desc">Full-text and structured search across 3,000+ case records</div></div>
+        <div class="tool-tile"><div class="tool-name">Landscape</div><div class="tool-desc">Era-based pattern analysis and enforcement trend visualization</div></div>
+        <div class="tool-tile"><div class="tool-name">LLM Interface</div><div class="tool-desc">Natural language querying of the case corpus - zero data retention</div></div>
+        <div class="tool-tile"><div class="tool-name">Audit Trail</div><div class="tool-desc">Full methodology transparency - every extraction decision documented</div></div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <div class="section-label"><span class="roman">III.</span> What Comes Next</div>
+        <p class="body-text" style="font-size:12px;">CaseLinker closes with this report. The research continues. Open records work is underway to extend the corpus with state-prosecuted cases. Additional research directions - platform harm analysis, investigator support tooling, kill chain documentation - are under active development. The enforcement record is not finished being written. Neither is the work of making it visible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-row" style="margin-top:16px;">
+    <div class="cta-tile rust-bg"><div class="cta-label">Live Deployment</div><div class="cta-value">web-production-13a2.up.railway.app<br><span style="font-size:10px;font-style:normal;font-weight:400;color:var(--tan);">Live on Railway</span></div></div>
+    <div class="cta-tile olive-bg"><div class="cta-label">Source Code &amp; Data</div><div class="cta-value">github.com/mrinaalr/CaseLinker<br><span style="font-size:10px;font-style:normal;font-weight:400;color:var(--tan);">MIT License - fully open</span></div></div>
+    <div class="cta-tile"><div class="cta-label">Research &amp; Contact</div><div class="cta-value">end-child-exploitation.com<br><span style="font-size:10px;font-style:normal;font-weight:400;color:var(--tan);">mrinaalr.github.io/website</span></div></div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="rule-h" style="margin-top:16px;"></div>
+    <div class="rule-h-thick"></div>
+    <div style="background:var(--parchment);border-top:1px solid var(--rule);padding:11px 0;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:11px;font-weight:700;color:var(--brown);">Mrinaal Ramachandran &nbsp;&nbsp;<span style="font-weight:400;font-style:italic;color:var(--brown-light);font-size:10.5px;">Graduate Student &nbsp;·&nbsp; UMass Amherst &nbsp;·&nbsp; Independent Research</span></div>
+      <div style="font-size:9px;letter-spacing:0.08em;color:var(--brown-light);font-family:'Libre Baskerville',serif;text-align:right;">github.com/mrinaalr/CaseLinker &nbsp;·&nbsp; HRPO #7668 &nbsp;·&nbsp; MIT License</div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
