@@ -31,7 +31,7 @@
             </section>
 
             <section class="projects">
-                <h2>Projects</h2>
+                <h2>Current Work</h2>
                 <div class="project-card featured">
                     <h3>End Child Exploitation</h3>
                     <p>A research site analyzing exploitation vectors, emerging technologies, and enforcement efforts to explore how technology can reduce harm and aid those protecting children.</p>
@@ -41,13 +41,13 @@
                 </div>
                 <div class="project-card">
                     <h3>CaseLinker</h3>
-                    <p>A project focused on clustering and visualizing information from cases involving child sexual exploitation and abuse.</p>
+                    <p>CaseLinker is a project designed to aggregate, structure, analyze, and visualize statistical and contextual information from cases involving crimes against children and child sexual exploitation & abuse (CSEA).</p>
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                         <div style="display: flex; gap: 1rem;">
                             <a href="https://github.com/mrinaalr/CaseLinker" target="_blank" rel="noopener noreferrer" class="project-link">
                                 View on GitHub →
                             </a>
-                            <a href="https://web-production-13a2.up.railway.app" target="_blank" rel="noopener noreferrer" class="project-link">
+                            <a href="https://caselinker.up.railway.app/" target="_blank" rel="noopener noreferrer" class="project-link">
                                 View CaseLinker →
                             </a>
                         </div>
@@ -89,6 +89,7 @@
                 </div>
             </section>
 
+            
             <section class="links">
                 <h2>Connect</h2>
                 <div class="link-grid">
@@ -133,5 +134,44 @@
             <p>&copy; 2026 Mrinaal Ramachandran</p>
         </footer>
     </div>
+    <script>
+        (function () {
+            const frame = document.getElementById("personalVideoFrame");
+            const tabs = document.querySelectorAll(".video-tab");
+            const watchLink = document.getElementById("personalVideoLink");
+            if (!frame || !tabs.length || !watchLink) return;
+
+            const buildEmbedUrl = (id) => {
+                const url = new URL("https://www.youtube.com/embed/" + id);
+                url.searchParams.set("rel", "0");
+                url.searchParams.set("modestbranding", "1");
+                url.searchParams.set("playsinline", "1");
+                if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+                    url.searchParams.set("origin", window.location.origin);
+                }
+                return url.toString();
+            };
+
+            const applyVideo = (id) => {
+                frame.src = buildEmbedUrl(id);
+                watchLink.href = "https://www.youtube.com/watch?v=" + id;
+            };
+
+            tabs.forEach((tab) => {
+                tab.addEventListener("click", () => {
+                    const id = tab.dataset.videoId;
+                    if (!id) return;
+
+                    tabs.forEach((other) => {
+                        other.classList.remove("active");
+                        other.setAttribute("aria-selected", "false");
+                    });
+                    tab.classList.add("active");
+                    tab.setAttribute("aria-selected", "true");
+                    applyVideo(id);
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

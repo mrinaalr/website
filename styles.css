@@ -120,7 +120,9 @@ h2 {
 }
 
 /* Projects */
-.projects {
+.projects,
+.completed-work,
+.personal-videos {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -166,6 +168,52 @@ h2 {
 
 .project-link:hover {
     color: var(--link-hover);
+}
+
+/* Personal Videos */
+.video-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0.25rem 0 1rem;
+}
+
+.video-tab {
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-color);
+    border-radius: 999px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.video-tab:hover {
+    border-color: var(--link-color);
+    color: #ffffff;
+}
+
+.video-tab.active {
+    background: rgba(74, 158, 255, 0.2);
+    border-color: var(--link-color);
+    color: #ffffff;
+}
+
+.video-frame-wrap {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.video-frame-wrap iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    display: block;
 }
 
 /* Selected Work */
@@ -338,22 +386,6 @@ h2 {
 
 .primary-video-wrap {
     position: relative;
-}
-
-.primary-video-wrap .primary-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.primary-video-wrap .primary-video.active {
-    position: relative;
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .secondary-video {
