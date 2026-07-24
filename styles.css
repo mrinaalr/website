@@ -159,6 +159,21 @@ h2 {
     margin-bottom: 1rem;
 }
 
+.project-card ul {
+    color: var(--text-muted);
+    margin: 0 0 1rem 1.25rem;
+    padding: 0;
+    list-style: disc;
+}
+
+.project-card li {
+    margin-bottom: 0.5rem;
+}
+
+.project-card li:last-child {
+    margin-bottom: 0;
+}
+
 .project-link {
     color: var(--link-color);
     text-decoration: none;
