@@ -1,226 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Me - Mrinaal Ramachandran</title>
-        <link rel="stylesheet" href="styles.css">
-        <style>
-            .hero-image {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: opacity 1.5s ease-in-out;
-            }
-    
-            .hero-image.active {
-                opacity: 1;
-            }
-    
-            .hero-image.inactive {
-                opacity: 0;
-            }
-        </style>
-    </head>
-<body class="about-page">
-    <div class="container">
-        <header>
-            <div class="hero">
-                <img src="window.jpg" alt="Window" class="hero-image active" id="img2">
-                <img src="desert.jpg" alt="Desert" class="hero-image inactive" id="img1">
-                <div class="hero-overlay">
-                    <p class="tagline">A bit about my background and interests</p>
-                </div>
-                <a href="https://www.youtube.com/@mrinaalr/videos" target="_blank" rel="noopener noreferrer" class="washington-face-link" title="Visit my YouTube channel">
-                    <svg class="youtube-icon-overlay" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                </a>
-            </div>
-        </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background. Mrinaal Ramachandran</title>
+  <meta name="description" content="Background, pictures, and film. Mrinaal Ramachandran, Fremont, Tacobots, water polo, training.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='5.5' fill='none' stroke='%231a211e' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-notes">
+  <a class="skip" href="#life">Skip to background</a>
+  <div class="wrap">
+    <header class="mast">
+      <div class="mast-top">
+        <div class="who">
+          <p class="affiliation"><a href="index.html">Mrinaal Ramachandran</a></p>
+        </div>
+        <nav class="nav" aria-label="Page">
+          <a href="index.html#research">Research</a>
+          <a href="index.html#work">Work</a>
+          <a href="about.html" aria-current="page">Background</a>
+          <a href="Mrinaal_Ramachandran_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
+      </div>
+      <h1>Background</h1>
+    </header>
 
-        <main>
-            <nav class="back-nav">
-                <a href="index.html" class="back-link">← Back to Home</a>
-            </nav>
+    <main id="life">
+      <section>
+        <p>I grew up in Fremont. I finished a computer science degree at Arizona State in 2025, and I am in the M.S. program<br>at UMass Amherst through 2027.</p>
+      </section>
 
-            <section class="about">
-                <h2>Background</h2>
-                <p>
-                    I'm from the Bay Area, born and raised in Fremont, California. I completed my undergraduate 
-                    degree in Computer Science at Arizona State University and am currently pursuing my Master's 
-                    in Computer Science at the University of Massachusetts Amherst.
-                </p>
-            </section>
+      <section class="film-top" id="film">
+        <h2>Training</h2>
+        <div class="feature" id="bag-wrap">
+          <video id="bag" autoplay muted loop playsinline preload="auto">
+            <source src="bag.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="unmute" id="unmute">Sound off. Click for sound.</button>
+        </div>
+        <p class="quiet stack">Eagle Scout, 2021. Former captain of Tacobots, FTC 11099, 2017 to 2022. We qualified for the FIRST world championship twice, St. Louis and Houston. I played water polo. I train no-gi jiu-jitsu, wrestling, Muay Thai, and taekwondo. I've taken road trips through more than 15 of the 50 states. I want to see all of them.</p>
+        <div class="reel">
+          <video autoplay muted loop playsinline preload="auto"><source src="washington.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="mountain.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="desert.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="texas.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="car.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="grad.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="croc.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="grapple.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline preload="auto"><source src="war.mp4" type="video/mp4"></video>
+        </div>
+      </section>
 
-            <section class="about">
-                <h2>Activities & Life</h2>
-                <p>
-                    Beyond academics, I've had various experiences that have shaped who I am. I'm an 
-                    Eagle Scout, which instilled in me values of leadership, service, and perseverance. I also played 
-                    water polo, traveled the country camping and practicing jiu jitsu, and was the captain of my 
-                    middle and high school robotics team, Tacobots.
-                </p>
-            </section>
+      <section class="block">
+        <div class="stills">
+          <figure>
+            <img src="taco.jpg" alt="Tacobots, team 11099, outside at night in light blue sweatshirts.">
+            <figcaption>Tacobots, 11099.</figcaption>
+          </figure>
+          <figure>
+            <img src="wp.JPG" alt="Mission San Jose water polo team posed by an outdoor pool.">
+            <figcaption>Water polo.</figcaption>
+          </figure>
+          <figure>
+            <img src="bots.JPG" alt="Tacobots in yellow hoodies, holding trophies and a team banner. The banner says Fremont, California.">
+            <figcaption>Tacobots, Fremont.</figcaption>
+          </figure>
+        </div>
 
-            <section class="about">
-                <h2>Interests</h2>
-                <p>
-                    I'm an avid MMA fan and enjoy following and practicing the sport. When I'm not working on research or projects, 
-                    I enjoy traveling, staying active through exercise, relaxing, and taking long drives to listen to music and 
-                    explore new places. 
-                </p>
-            </section>
-            <section class="interests-media-section">
-                <div class="interests-media-grid">
-                    <div class="mma-video-container">
-                        <div class="primary-video-wrap" id="primaryVideoWrap">
-                            <video autoplay muted loop playsinline preload="auto" id="bagVideo">
-                                <source src="bag.mp4" type="video/mp4">
-                            </video>
-                            <div class="video-overlay-text">Click to unmute</div>
-                        </div>
-                    
-                        <video autoplay muted loop playsinline preload="metadata" class="secondary-video">
-                            <source src="mountain.mp4" type="video/mp4">
-                        </video>
+        <div class="swap" aria-hidden="true">
+          <img src="window.jpg" alt="" class="is-on" id="swap-a">
+          <img src="desert.jpg" alt="" id="swap-b">
+        </div>
+        <p class="quiet caption-follow">Window, then the desert.</p>
+        <p class="film-note"><a href="https://www.youtube.com/@mrinaalr/videos" target="_blank" rel="noopener noreferrer">YouTube</a></p>
+      </section>
+    </main>
 
-                        <video autoplay muted loop playsinline preload="metadata" class="secondary-video">
-                            <source src="texas.mp4" type="video/mp4">
-                        </video>
-                    </div>
-            
-                    <div class="side-media-column">
-                        <div class="side-media-card">
-                            <img src="taco.jpg" alt="Taco">
-                        </div>
-            
-                        <div class="side-media-card">
-                            <img src="bots.JPG" alt="Tacbobots">
-                        </div>
-            
-                        <div class="side-media-card tall">
-                            <img src="wp.JPG" alt="Water Polo">
-                        </div>
-            
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="war.mp4" type="video/mp4">
-                            </video>
-                        </div>
-            
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="washington.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="desert.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="grapple.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="croc.mp4" type="video/mp4">
-                            </video>
-                        </div>
-
-
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="car.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="side-media-card tall">
-                            <video autoplay muted loop playsinline>
-                                <source src="grad.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Mrinaal Ramachandran</p>
-        </footer>
-    </div>
-
-    <script>
-    const img1 = document.getElementById('img1');
-    const img2 = document.getElementById('img2');
-    let showingFirst = false;
-
-    function scheduleNext() {
-        const delay = 3000 + Math.random() * 7000;
-        setTimeout(() => {
-            if (showingFirst) {
-                img1.classList.replace('active', 'inactive');
-                img2.classList.replace('inactive', 'active');
-            } else {
-                img2.classList.replace('active', 'inactive');
-                img1.classList.replace('inactive', 'active');
-            }
-            showingFirst = !showingFirst;
-            scheduleNext();
-        }, delay);
-    }
-
-    scheduleNext();
-
-    
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-        }
-    });
-});
-
-const mediaContainer = document.querySelector(".mma-video-container");
-if (mediaContainer) {
-    observer.observe(mediaContainer);
-}
-
-    // Video: click to unmute, double click to mute
-    const wrap = document.getElementById("primaryVideoWrap");
-    const bagVideo = document.getElementById("bagVideo");
-    const overlay = document.querySelector(".video-overlay-text");
-    if (wrap && bagVideo && overlay) {
-        let clickTimer = null;
-        wrap.addEventListener("click", () => {
-            if (bagVideo.muted) {
-                bagVideo.muted = false;
-                overlay.textContent = "Double press to mute";
-                return;
-            }
-            if (clickTimer) {
-                clearTimeout(clickTimer);
-                clickTimer = null;
-                bagVideo.muted = true;
-                overlay.textContent = "Click to unmute";
-                return;
-            }
-            clickTimer = setTimeout(() => {
-                clickTimer = null;
-            }, 300);
-        });
-    }
-
-
-
-    </script>
-    
+    <footer>
+      <a href="index.html">Front page</a>
+      <a href="mailto:mramachandra@umass.edu">mramachandra@umass.edu</a>
+      <a href="https://github.com/mrinaalr" rel="me noopener noreferrer" target="_blank">GitHub</a>
+      <p class="copy">2026</p>
+    </footer>
+  </div>
+  <script src="site.js" defer></script>
 </body>
 </html>

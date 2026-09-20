@@ -1,187 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrinaal Ramachandran</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mrinaal Ramachandran</title>
+  <meta name="description" content="Mrinaal Ramachandran works in computational criminology. He studies the pathways of technology-mediated exploitation with computational methods, in the hope of designing better interventions and interdictions.">
+  <meta property="og:title" content="Mrinaal Ramachandran">
+  <meta property="og:description" content="Computational criminology. Studying the pathways of technology-mediated exploitation with computational methods, in the hope of designing better interventions and interdictions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mrinaalr.github.io/website/">
+  <meta property="og:image" content="https://mrinaalr.github.io/website/window-sunset.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='5.5' fill='none' stroke='%231a211e' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Caveat:wght@500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mrinaal Ramachandran",
+    "email": "mramachandra@umass.edu",
+    "url": "https://mrinaalr.github.io/website/",
+    "jobTitle": "Strategic Research Fellow",
+    "affiliation": [
+      { "@type": "CollegeOrUniversity", "name": "University of Massachusetts Amherst" },
+      { "@type": "Organization", "name": "Project VIC International" }
+    ],
+    "sameAs": [
+      "https://github.com/mrinaalr",
+      "https://www.linkedin.com/in/mrinaalr",
+      "https://orcid.org/0009-0002-5164-2225"
+    ]
+  }
+  </script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="hero">
-                <img src="domicile.jpg" alt="Mrinaal Ramachandran" class="hero-image">
-                <div class="hero-overlay">
-                    <h1>Mrinaal Ramachandran</h1>
-                    <p class="tagline">Engineering, Research, & Social Impact</p>
-                </div>
+<body class="home">
+  <a class="skip" href="#research">Skip to the work</a>
+  <div class="wrap">
+    <header class="mast">
+      <div class="mast-top">
+        <div class="who">
+          <p class="affiliation">M.S. Computer Science, UMass Amherst, expected 2027</p>
+          <p class="affiliation">Strategic Research Fellow, Project VIC International</p>
+        </div>
+        <nav class="nav" aria-label="Page">
+          <a href="#research">Research</a>
+          <a href="#work">Work</a>
+          <a href="about.html">Background</a>
+          <a href="Mrinaal_Ramachandran_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
+      </div>
+      <div class="mast-grid">
+        <div>
+          <h1>Mrinaal Ramachandran</h1>
+          <p class="thesis">I work in computational criminology. I study the pathways of technology-mediated exploitation with computational methods, in the hope of designing better interventions and interdictions.</p>
+        </div>
+        <figure class="desk-pic">
+          <img src="desk.jpg" alt="The desk. Water polo jacket on the chair, board of goals beside the monitor.">
+        </figure>
+      </div>
+    </header>
+
+    <main>
+      <section class="desk" id="research">
+        <div class="desk-head">
+          <h2>Research</h2>
+          <p class="quiet">Public case records, 2002 to 2026. The point is to compare one record with thousands of others.</p>
+        </div>
+
+        <div class="machine-wrap">
+          <ol class="machine" role="tablist" aria-label="How the work moves">
+            <li>
+              <button class="node" id="tab-record" type="button" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-state="record" data-view="Sources" data-src="https://caselinker.up.railway.app/sources">
+                <span class="dot">1</span>
+                <span class="lbl">Record</span>
+              </button>
+            </li>
+            <li>
+              <button class="node" id="tab-extract" type="button" role="tab" aria-selected="true" aria-controls="panel" tabindex="0" data-state="extract" data-view="Under the hood" data-src="https://caselinker.up.railway.app/under-the-hood">
+                <span class="dot">2</span>
+                <span class="lbl">Extract</span>
+              </button>
+            </li>
+            <li>
+              <button class="node" id="tab-graph" type="button" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-state="graph" data-view="Graph" data-src="https://caselinker.up.railway.app/patterns/graph">
+                <span class="dot">3</span>
+                <span class="lbl">Graph</span>
+              </button>
+            </li>
+            <li>
+              <button class="node" id="tab-link" type="button" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-state="link" data-view="Clusters" data-src="https://caselinker.up.railway.app/clusters">
+                <span class="dot">4</span>
+                <span class="lbl">Link</span>
+              </button>
+            </li>
+            <li>
+              <button class="node" id="tab-affordance" type="button" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-state="affordance" data-view="Tech landscape" data-src="https://caselinker.up.railway.app/tech-landscape">
+                <span class="dot">5</span>
+                <span class="lbl">Affordance</span>
+              </button>
+            </li>
+            <li>
+              <button class="node" id="tab-machine" type="button" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1" data-state="machine" data-view="Lifecycle" data-src="https://caselinker.up.railway.app/lifecycle">
+                <span class="dot">6</span>
+                <span class="lbl">Machine</span>
+              </button>
+            </li>
+          </ol>
+        </div>
+
+        <aside class="margin" id="panel" role="tabpanel" aria-labelledby="tab-extract" aria-live="polite">
+          <div class="note" data-note="record" hidden>
+            <p class="scribble">I start from text that is already public. Task force reports, press releases, federal filings. No raw evidence files.</p>
+            <p class="receipt-label">Receipt</p>
+            <p class="receipt">10,282 public reports and 56 sources in the current release. UMass HRPO NHSR #7668. <a href="https://caselinker.up.railway.app/sources" target="_blank" rel="noopener noreferrer">Sources</a>.</p>
+          </div>
+          <div class="note" data-note="extract">
+            <p class="scribble">Deterministic extraction. NER and regex pattern matching. 125,891 extracted features.</p>
+            <p class="receipt-label">Receipt</p>
+            <p class="receipt"><a href="https://mrinaalr.github.io/website/CaseLinker-%20Interpretable%20ML%20Approaches%20for%20Analyzing%20Internet%20Crimes%20Against%20Children%20Reports.pdf" target="_blank" rel="noopener noreferrer">Interpretable ML</a>. <a href="https://arxiv.org/abs/2603.18020" target="_blank" rel="noopener noreferrer">arXiv:2603.18020</a>. <a href="https://caselinker.up.railway.app/under-the-hood" target="_blank" rel="noopener noreferrer">Under the hood</a>.</p>
+          </div>
+          <div class="note" data-note="graph" hidden>
+            <p class="scribble">Extracted fields map onto the CAC Ontology and CASE/UCO. Cases can be queried, compared, and analyzed as relations, beyond standard tags and SQL.</p>
+            <p class="receipt-label">Receipt</p>
+            <p class="receipt">AffordanceMisuse, <a href="https://github.com/Project-VIC-International/CAC-Ontology/pull/33" target="_blank" rel="noopener noreferrer">PR 33</a>, merged. ConditioningPhase, <a href="https://github.com/Project-VIC-International/CAC-Ontology/pull/39" target="_blank" rel="noopener noreferrer">PR 39</a>, merged.</p>
+          </div>
+          <div class="note" data-note="link" hidden>
+            <p class="scribble">Any extracted attribute can be compared. SPARQL on the graph, facets, trends, and similarity.</p>
+            <p class="receipt-label">Receipt</p>
+            <p class="receipt"><a href="https://caselinker.up.railway.app/analysis" target="_blank" rel="noopener noreferrer">Analysis</a>. <a href="https://caselinker.up.railway.app/patterns/graph" target="_blank" rel="noopener noreferrer">Graph</a>. <a href="https://caselinker.up.railway.app/clusters" target="_blank" rel="noopener noreferrer">Clusters</a>.</p>
+          </div>
+          <div class="note" data-note="affordance" hidden>
+            <p class="scribble">I would rather isolate and analyze the capability that was misused than the app it lived on.</p>
+            <p class="receipt-label">Receipt</p>
+            <p class="receipt"><a href="https://doi.org/10.5281/zenodo.21347781" target="_blank" rel="noopener noreferrer">Affordances for Harm</a>, preprint, 2026.</p>
+          </div>
+          <div class="note" data-note="machine" hidden>
+            <p class="scribble">The state machines represent how the offense unfolded and progressed. The aim is a robust model of offense transitions for disruption analysis.</p>
+            <p class="receipt-label">Receipt</p>
+            <p class="receipt">30 primary federal cases from PACER, instantiated and analyzed as state machines. <a href="https://caselinker.up.railway.app/lifecycle" target="_blank" rel="noopener noreferrer">Lifecycle</a>.</p>
+          </div>
+        </aside>
+
+        <div class="trace is-on" id="trace">
+          <h3>Sample sentence</h3>
+          <p class="quiet">The shape of one of those records. The fields are what get compared.</p>
+          <p class="sample">
+            On <button type="button" class="hit" aria-pressed="false" data-kind="date" data-rule="Month name followed by a day number.">March 4</button>, the <button type="button" class="hit" aria-pressed="false" data-kind="organization" data-rule="Matched against a list of offices, task forces, and federal agencies.">State Attorney General</button> announced charges. Investigators said the activity migrated from <button type="button" class="hit" aria-pressed="false" data-kind="platform" data-rule="Matched against a platform list. The words here are generic on purpose.">social media</button> to a <button type="button" class="hit" aria-pressed="false" data-kind="platform" data-rule="Same list. A second platform is a second hit, not a new kind of fact.">chat app</button>. The defendant had a <button type="button" class="hit" aria-pressed="false" data-kind="prior status" data-rule="A fixed phrase for perpetrator history.">prior conviction</button> and later <button type="button" class="hit" aria-pressed="false" data-kind="outcome" data-rule="Disposition language. Plea, conviction, sentence, dismissal.">pleaded guilty</button> in federal court.
+          </p>
+          <p class="rule" id="rule">Pick a marked phrase. The rule that caught it shows up here.</p>
+        </div>
+      </section>
+
+      <section class="block" id="work">
+        <h2>Work</h2>
+        <ul class="ledger">
+          <li>
+            <div>
+              <h3>Affordances for Harm</h3>
+              <p>How offenders misuse platform capabilities to exploit children, and where to intervene. Preprint, 2026. 30 primary federal cases from PACER, instantiated and analyzed as state machines.</p>
             </div>
-        </header>
+            <p class="links">
+              <a href="https://doi.org/10.5281/zenodo.21347781" target="_blank" rel="noopener noreferrer">Paper</a>
+            </p>
+          </li>
+          <li>
+            <div>
+              <h3>CaseLinker</h3>
+              <p>Aggregates, structures, analyzes, and visualizes public enforcement records involving ICAC and online exploitation. Open source, 2026. The current release includes 10,282 public reports, 125,891 extracted features, 4,137 agencies, and 56 sources, with no PII processed in accordance with UMass HRPO NHSR Determination #7668 and 45 CFR 46.102(f)(1), (2).</p>
+            </div>
+            <p class="links">
+              <a href="https://arxiv.org/abs/2603.18020" target="_blank" rel="noopener noreferrer">arXiv</a>
+              <a href="https://doi.org/10.5281/zenodo.18744216" target="_blank" rel="noopener noreferrer">Zenodo</a>
+              <a href="https://github.com/mrinaalr/CaseLinker" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://caselinker.up.railway.app/" target="_blank" rel="noopener noreferrer">Live tool</a>
+              <a href="PaintingTheLandscapeOfInternetCrimesAgainstChildrenWithInterpretiveTooling.html" title="Painting the Landscape of Internet Crimes Against Children with Interpretive Tooling" target="_blank" rel="noopener noreferrer">Visual briefing</a>
+            </p>
+          </li>
+          <li>
+            <div>
+              <h3>Who's Watching You Zoom?</h3>
+              <p>Privacy of third-party Zoom apps. PETS 2025, with Saharsh Goenka, Adit Prabhu, Payge Sakurai, and Prof. Rakibul Hasan. More than 97,000 marketplace snapshots.</p>
+            </div>
+            <p class="links">
+              <a href="https://doi.org/10.56553/popets-2025-0143" target="_blank" rel="noopener noreferrer">Paper</a>
+            </p>
+          </li>
+          <li>
+            <div>
+              <h3>Ontology</h3>
+              <p>AffordanceMisuse and a spine-level ConditioningPhase, merged into the CAC Ontology. Trajectories extension on the CASE/UCO SDK, pull request 135, open.</p>
+            </div>
+            <p class="links">
+              <a href="https://github.com/Project-VIC-International/CAC-Ontology/pull/33" target="_blank" rel="noopener noreferrer">PR 33</a>
+              <a href="https://github.com/Project-VIC-International/CAC-Ontology/pull/39" target="_blank" rel="noopener noreferrer">PR 39</a>
+              <a href="https://github.com/vulnmaster/CASE-UCO-SDK/pull/135" target="_blank" rel="noopener noreferrer">PR 135</a>
+            </p>
+          </li>
+          <li>
+            <div>
+              <h3>Earlier</h3>
+              <p>DriverAI, summer 2025. Android authentication and encryption: SQLCipher, Play Integrity, AES on Room, JWT with Firebase Auth and AWS Cognito.</p>
+              <p>Capstone with General Dynamics Mission Systems. Ultra-wideband boards for bidirectional data, two semesters at Arizona State.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
 
-        <main>
-            <section class="about">
-                <h2>About</h2>
-                <p>
-                    I'm a graduate student in Computer Science at UMass Amherst, interested in projects that combine 
-                    technical skills with social impact. I'm particularly passionate about security, applied AI, and 
-                    developing technology to detect and prevent online abuse. I'm currently working on CaseLinker 
-                    and researching online child exploitation, and I hope to continue building tools that help make the 
-                    digital world safe for everyone.
-                </p>
-            </section>
+      <section class="block" id="pictures">
+        <h2>Pictures</h2>
+        <div class="prints">
+          <figure class="print-main">
+            <img src="window-sunset.jpg" alt="Sunset through a dark window frame, with a tree and power lines outside.">
+            <figcaption>From the window.</figcaption>
+          </figure>
+          <figure>
+            <img src="domicile.jpg" alt="A sage green house and a red barn in deep snow, cars parked in front." loading="lazy">
+            <figcaption>Amherst house in snow.</figcaption>
+          </figure>
+          <figure>
+            <img src="farm-sunset.jpg" alt="Farm equipment in a field at sunset, sun breaking under dark cloud." loading="lazy">
+            <figcaption>A field at dusk.</figcaption>
+          </figure>
+        </div>
+        <p class="more"><a href="about.html">Background</a></p>
+      </section>
+    </main>
 
-            <section class="projects">
-                <h2>Current Work</h2>
-                <div class="project-card featured">
-                    <h3>End Child Exploitation</h3>
-                    <p>A research site analyzing exploitation vectors, emerging technologies, and enforcement efforts to explore how technology can reduce harm and aid those protecting children.</p>
-                    <a href="https://end-child-exploitation.com/" target="_blank" rel="noopener noreferrer" class="project-link">
-                        Visit Research Site →
-                    </a>
-                </div>
-                <div class="project-card">
-                    <h3>CaseLinker</h3>
-                    <p>CaseLinker is a project designed to aggregate, structure, analyze, and visualize statistical and contextual information from cases involving crimes against children and child sexual exploitation & abuse (CSEA).</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                        <div style="display: flex; gap: 1rem;">
-                            <a href="https://github.com/mrinaalr/CaseLinker" target="_blank" rel="noopener noreferrer" class="project-link">
-                                View on GitHub →
-                            </a>
-                            <a href="https://caselinker.up.railway.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                                View CaseLinker →
-                            </a>
-                        </div>
-                        <div style="display: flex; gap: 1rem;">
-                            <a href="https://doi.org/10.5281/zenodo.18744216" target="_blank" rel="noopener noreferrer" class="project-link">
-                                View Publication →
-                            </a>
-                            <a href="https://arxiv.org/abs/2603.18020" target="_blank" rel="noopener noreferrer" class="project-link">
-                                View Technical Report →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Affordances for Harm: How Offenders Misuse Platform Capabilities to Exploit Children, and Where to Intervene</h3>
-                    <p>A preprint presenting an affordance-based framework for Internet Crimes Against Children (ICAC), grounded in 7,426 enforcement records from 56 sources and 61 task forces. Key contributions include:</p>
-                    <ul>
-                        <li>An operational affordance framework mapping platform capabilities to documented harm vectors across grooming, sextortion, CSAM production, and coordinated networks.</li>
-                        <li>A scalable open-source method (CaseLinker) for modeling sensitive case data using validated knowledge graphs built on Project VIC’s CAC Ontology and the CASE/UCO standard.</li>
-                        <li>Practical platform harm signatures and exploitation lifecycle visualizations grounded in 30 primary federal PACER records.</li>
-                    </ul>
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                        <a href="https://doi.org/10.5281/zenodo.21347781" target="_blank" rel="noopener noreferrer" class="project-link">
-                            View Publication →
-                        </a>
-                        <a href="https://casenoesis.up.railway.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                            Explore AfH framework in exploitation domains outside ICAC →
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="completed-work">
-                <h2>Completed Work</h2>
-                <div class="project-card">
-                    <h3>Zoom App Privacy Research</h3>
-                    <p>Co-authored research paper on privacy analysis of third-party Zoom apps, submitted to PETS 2025. Conducted longitudinal study analyzing 97,000+ marketplace snapshots and developed proprietary Zoom app to understand data access capabilities.</p>
-                    <a href="https://arxiv.org/pdf/2504.04388" target="_blank" rel="noopener noreferrer" class="project-link">
-                        View Paper →
-                    </a>
-                </div>
-                <div class="project-card">
-                    <h3>UWB Communication System</h3>
-                    <p>Capstone project with General Dynamics Mission Systems. Designed and implemented Ultra-Wideband communication boards for data transmission, focusing on modular and scalable code to support bidirectional communication between devices.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Android Security Intern - DriverAI</h3>
-                    <p>Developed secure authentication workflows using SQLCipher, Play Integrity API, and Credential Manager. Designed AES encryption layer for Room database and implemented backend authentication flows with JWT-based token verification.</p>
-                </div>
-            </section>
-
-            
-            <section class="links">
-                <h2>Connect</h2>
-                <div class="link-grid">
-                    <a href="Mrinaal_Ramachandran_CV.pdf" target="_blank" rel="noopener noreferrer" class="link-card">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                        </svg>
-                        <span>Resume</span>
-                    </a>
-                    <a href="https://github.com/mrinaalr" target="_blank" rel="noopener noreferrer" class="link-card">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mrinaalr" target="_blank" rel="noopener noreferrer" class="link-card">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://end-child-exploitation.com/" target="_blank" rel="noopener noreferrer" class="link-card">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                        <span>Research</span>
-                    </a>
-                </div>
-            </section>
-
-            <section class="about-me-section">
-                <a href="about.html" class="link-card about-me-card">
-                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
-                    <span>Learn more about me →</span>
-                </a>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2026 Mrinaal Ramachandran</p>
-        </footer>
-    </div>
-    <script>
-        (function () {
-            const frame = document.getElementById("personalVideoFrame");
-            const tabs = document.querySelectorAll(".video-tab");
-            const watchLink = document.getElementById("personalVideoLink");
-            if (!frame || !tabs.length || !watchLink) return;
-
-            const buildEmbedUrl = (id) => {
-                const url = new URL("https://www.youtube.com/embed/" + id);
-                url.searchParams.set("rel", "0");
-                url.searchParams.set("modestbranding", "1");
-                url.searchParams.set("playsinline", "1");
-                if (window.location.protocol === "http:" || window.location.protocol === "https:") {
-                    url.searchParams.set("origin", window.location.origin);
-                }
-                return url.toString();
-            };
-
-            const applyVideo = (id) => {
-                frame.src = buildEmbedUrl(id);
-                watchLink.href = "https://www.youtube.com/watch?v=" + id;
-            };
-
-            tabs.forEach((tab) => {
-                tab.addEventListener("click", () => {
-                    const id = tab.dataset.videoId;
-                    if (!id) return;
-
-                    tabs.forEach((other) => {
-                        other.classList.remove("active");
-                        other.setAttribute("aria-selected", "false");
-                    });
-                    tab.classList.add("active");
-                    tab.setAttribute("aria-selected", "true");
-                    applyVideo(id);
-                });
-            });
-        })();
-    </script>
+    <footer>
+      <a href="mailto:mramachandra@umass.edu">mramachandra@umass.edu</a>
+      <a href="https://github.com/mrinaalr" rel="me noopener noreferrer" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/mrinaalr" rel="me noopener noreferrer" target="_blank">LinkedIn</a>
+      <a href="https://orcid.org/0009-0002-5164-2225" rel="me noopener noreferrer" target="_blank">ORCID</a>
+      <a href="https://www.youtube.com/@mrinaalr/videos" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <p class="copy">2026</p>
+    </footer>
+  </div>
+  <script src="site.js" defer></script>
 </body>
 </html>
