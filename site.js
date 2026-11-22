@@ -100,6 +100,41 @@ function termId(token) {
   return colon >= 0 ? bare.slice(colon + 1) : bare;
 }
 
+function splitTurtleBlocks(doc) {
+  const blocks = [];
+  let current = "";
+  let quoted = false;
+  for (let i = 0; i < doc.length; i += 1) {
+    const ch = doc[i];
+    if (ch === "\"" && doc[i - 1] !== "\\") quoted = !quoted;
+    current += ch;
+    const end = !quoted && (doc[i - 1] === " " || doc[i - 1] === "\n") && ch === "." && (doc[i + 1] === "\n" || doc[i + 1] === "\r" || doc[i + 1] === undefined);
+    if (end) {
+      blocks.push(current.trim());
+      current = "";
+    }
+  }
+  if (current.trim()) blocks.push(current.trim());
+  return blocks;
+}
+
+function splitTurtleParts(block) {
+  const parts = [];
+  let current = "";
+  let quoted = false;
+  for (let i = 0; i < block.length; i += 1) {
+    const ch = block[i];
+    if (ch === "\"" && block[i - 1] !== "\\") quoted = !quoted;
+    if (ch === ";" && !quoted) {
+      parts.push(current.trim());
+      current = "";
+      continue;
+    }
+    current += ch;
+  }
+  if (current.trim()) parts.push(current.trim());
+  return parts;
+}
 function turtleValue(raw) {
   const text = raw.trim().replace(/\s+\.$/, "");
   if (text.startsWith("\"")) return text.slice(1, text.lastIndexOf("\""));
@@ -112,9 +147,9 @@ function moleculeFromTurtle(doc) {
   const relations = ["appliedTo", "studies", "evidencedBy", "represents", "builtFrom", "includes", "types", "aimsAt", "informs", "analyzes"];
   const dashed = new Set(["analyzes"]);
   const hidden = new Set(["represents"]);
-  const blocks = doc.split(/\s\.\s*(?:\n|$)/).map((block) => block.trim()).filter((block) => block && !block.startsWith("@"));
+  const blocks = splitTurtleBlocks(doc).map((block) => block.trim()).filter((block) => block && !block.startsWith("@"));
   const records = blocks.map((block) => {
-    const parts = block.split(/\s*;\s*/);
+    const parts = splitTurtleParts(block);
     const head = parts[0].trim().split(/\s+/);
     const props = { id: termId(head[0]) };
     if (head[1] === "a" && head[2]) props.type = termId(head[2]);
@@ -130,7 +165,8 @@ function moleculeFromTurtle(doc) {
     return props;
   });
   const mapNode = records.find((node) => node.type === "Map");
-  const nodes = records.filter((node) => node !== mapNode).map((node) => ({
+  const instances = records.filter((node) => node.x != null);
+  const nodes = instances.map((node) => ({
     id: node.id,
     label: node.label,
     x: node.x,
@@ -140,18 +176,18 @@ function moleculeFromTurtle(doc) {
     gloss: node.comment
   }));
   const bonds = [];
-  records.forEach((node) => {
-    if (node === mapNode) return;
+  instances.forEach((node) => {
     relations.forEach((relation) => {
       const raw = node[relation];
       if (raw == null) return;
       const targets = Array.isArray(raw) ? raw : [raw];
       targets.forEach((target) => {
-        if (hidden.has(relation)) return;
+        if (!target || target.id == null) return;
         bonds.push({
           a: node.id,
           b: target.id,
-          kind: dashed.has(relation) ? "neighbor" : "bond"
+          relation,
+          kind: hidden.has(relation) ? "hidden" : dashed.has(relation) ? "neighbor" : "bond"
         });
       });
     });
@@ -170,12 +206,44 @@ function mountMolecule(stage, gloss, map) {
 
   const byId = new Map(map.nodes.map((node) => [node.id, node]));
   const neighbors = new Map(map.nodes.map((node) => [node.id, new Set()]));
+  const outs = new Map(map.nodes.map((node) => [node.id, []]));
+  const incoming = new Map(map.nodes.map((node) => [node.id, []]));
   map.bonds.forEach((bond) => {
     neighbors.get(bond.a).add(bond.b);
     neighbors.get(bond.b).add(bond.a);
+    outs.get(bond.a).push({ id: bond.b, relation: bond.relation, hidden: bond.kind === "hidden" });
+    incoming.get(bond.b).push(bond.a);
   });
 
-  const lines = map.bonds.map((bond) => {
+  function unique(list) {
+    const seenIds = new Set();
+    return list.filter((id) => {
+      if (seenIds.has(id)) return false;
+      seenIds.add(id);
+      return true;
+    });
+  }
+
+  const forwardOrder = ["includes", "types", "aimsAt", "informs", "studies", "evidencedBy", "appliedTo", "analyzes", "builtFrom", "represents"];
+  const outgoing = new Map(map.nodes.map((node) => {
+    const ordered = outs.get(node.id).slice().sort((a, b) => forwardOrder.indexOf(a.relation) - forwardOrder.indexOf(b.relation));
+    return [node.id, unique(ordered.map((edge) => edge.id))];
+  }));
+
+  function spur(from, to) {
+    return (outgoing.get(to) || []).every((id) => id === from);
+  }
+
+  const ring = new Map(map.nodes.map((node) => {
+    const inc = incoming.get(node.id);
+    const spurs = inc.filter((id) => spur(node.id, id));
+    const hubs = inc.filter((id) => !spur(node.id, id));
+    const outs = outgoing.get(node.id) || [];
+    const neighbors = node.id === "rec" ? [...outs, ...hubs, ...spurs] : [...outs, ...spurs, ...hubs];
+    return [node.id, unique(neighbors)];
+  }));
+
+  const lines = map.bonds.filter((bond) => bond.kind !== "hidden").map((bond) => {
     const line = document.createElementNS(ns, "line");
     line.classList.add("bond");
     if (bond.kind === "neighbor") line.classList.add("bond", "is-neighbor");
@@ -211,6 +279,9 @@ function mountMolecule(stage, gloss, map) {
 
   let selected = null;
   let drag = null;
+  let stack = [];
+  let seen = new Set();
+  const taken = new Map();
 
   function place(node) {
     node.atom.querySelectorAll("circle").forEach((circle) => {
@@ -237,11 +308,6 @@ function mountMolecule(stage, gloss, map) {
     if (selected) {
       lit.add(selected);
       neighbors.get(selected).forEach((id) => lit.add(id));
-      if (selected === "kr" || selected === "path") {
-        lit.add("path");
-        lit.add("rec");
-        lit.add("kr");
-      }
     }
     map.nodes.forEach((node) => {
       const on = node.id === selected;
@@ -260,8 +326,92 @@ function mountMolecule(stage, gloss, map) {
     gloss.textContent = node ? node.gloss : "Click a perspective.";
   }
 
+  function resetWalk(id) {
+    stack = id ? [id] : [];
+    seen = new Set(stack);
+    taken.clear();
+  }
+
+  function ensure() {
+    if (!stack.length || stack[stack.length - 1] !== selected) stack = [selected];
+  }
+
+  function usedFrom(id) {
+    let used = taken.get(id);
+    if (!used) {
+      used = new Set();
+      taken.set(id, used);
+    }
+    return used;
+  }
+
+  function defaultBack(id) {
+    const inc = incoming.get(id) || [];
+    if (inc.length) return inc[0];
+    const built = (outs.get(id) || []).find((edge) => edge.relation === "builtFrom");
+    if (built) return built.id;
+    return null;
+  }
+
+  function hasFreshExit(id, except) {
+    const used = usedFrom(id);
+    return (ring.get(id) || []).some((next) => next !== except && !used.has(next) && !seen.has(next));
+  }
+
+  function choose(here, parent) {
+    const used = usedFrom(here);
+    const waiting = (ring.get(here) || []).filter((next) => !used.has(next) && next !== parent);
+    const fresh = waiting.filter((next) => !seen.has(next));
+    if (fresh.length) return fresh[0];
+    const fruitful = waiting.filter((next) => hasFreshExit(next, here));
+    if (fruitful.length) return fruitful[0];
+    const others = (ring.get(here) || []).filter((next) => next !== parent);
+    if (parent && !used.has(parent) && others.every((next) => used.has(next))) return parent;
+    return null;
+  }
+
+  function take(here, next) {
+    usedFrom(here).add(next);
+    seen.add(next);
+    stack.push(next);
+    arrive(next);
+  }
+
+  function forward() {
+    ensure();
+    const parent = stack.length > 1 ? stack[stack.length - 2] : null;
+    const here = stack[stack.length - 1];
+    const next = choose(here, parent);
+    if (next) take(here, next);
+  }
+
+  function back() {
+    ensure();
+    if (stack.length > 1) {
+      const left = stack.pop();
+      const here = stack[stack.length - 1];
+      const used = taken.get(here);
+      if (used) used.delete(left);
+      seen.delete(left);
+      arrive(here);
+      return;
+    }
+    const pick = defaultBack(selected);
+    if (!pick || pick === selected) return;
+    resetWalk(pick);
+    arrive(pick);
+  }
+
+  function arrive(id) {
+    selected = id;
+    const node = byId.get(id);
+    if (node) node.atom.focus({ preventScroll: true });
+    paint();
+  }
+
   function select(id) {
     selected = selected === id ? null : id;
+    resetWalk(selected);
     paint();
   }
 
@@ -275,7 +425,7 @@ function mountMolecule(stage, gloss, map) {
 
   map.nodes.forEach((node) => {
     node.atom.addEventListener("pointerdown", (event) => {
-      event.preventDefault();
+      node.atom.focus({ preventScroll: true });
       node.atom.setPointerCapture(event.pointerId);
       const start = point(event);
       drag = { node, dx: start.x - node.x, dy: start.y - node.y, moved: false, sx: start.x, sy: start.y };
@@ -295,26 +445,29 @@ function mountMolecule(stage, gloss, map) {
       drag = null;
     });
     node.atom.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        select(node.id);
-        return;
-      }
-      const keys = ["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp"];
-      if (!keys.includes(event.key)) return;
+      if (event.key !== "Enter") return;
       event.preventDefault();
-      const list = Array.from(neighbors.get(node.id));
-      if (!list.length) return;
-      const next = byId.get(list[0]);
-      next.atom.focus();
-      selected = next.id;
-      paint();
+      select(node.id);
     });
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (!selected) return;
+    const active = document.activeElement;
+    if (!active || !stage.contains(active)) return;
+    if (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.isContentEditable) return;
+    const dirs = { ArrowRight: 1, ArrowUp: 1, " ": 1, ArrowLeft: -1, ArrowDown: -1 };
+    const dir = dirs[event.key];
+    if (!dir) return;
+    event.preventDefault();
+    if (dir > 0) forward();
+    else back();
   });
 
   svg.addEventListener("pointerdown", (event) => {
     if (event.target !== svg) return;
     selected = null;
+    resetWalk(null);
     paint();
   });
 

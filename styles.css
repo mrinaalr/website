@@ -270,6 +270,11 @@ h3 {
   color: var(--muted);
 }
 
+.node:focus,
+.node:focus-visible {
+  outline: none;
+}
+
 .dot {
   width: 2.4rem;
   height: 2.4rem;
@@ -577,6 +582,10 @@ figcaption {
   display: block;
   width: 100%;
   height: auto;
+  touch-action: pan-y;
+}
+
+.atom {
   touch-action: none;
 }
 
@@ -592,6 +601,11 @@ figcaption {
 
 .bond.is-neighbor {
   stroke-dasharray: 3 5;
+}
+
+.atom:focus,
+.atom:focus-visible {
+  outline: none;
 }
 
 .atom .ring {

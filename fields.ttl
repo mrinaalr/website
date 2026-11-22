@@ -1,7 +1,32 @@
 @base <https://mrinaalr.github.io/website/fields#> .
-@prefix fields: <https://mrinaalr.github.io/website/fields#> .
+@prefix fields: <https://mrinaalr.github.io/website/fields/vocab#> .
 @prefix layout: <https://mrinaalr.github.io/website/fields-layout#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+fields:Map a rdfs:Class .
+fields:Lens a rdfs:Class .
+fields:Field a rdfs:Class .
+fields:Pathway a rdfs:Class .
+fields:Record a rdfs:Class .
+fields:Representation a rdfs:Class .
+fields:Ontology a rdfs:Class ; rdfs:subClassOf fields:Representation .
+fields:Graph a rdfs:Class ; rdfs:subClassOf fields:Representation .
+fields:Model a rdfs:Class ; rdfs:subClassOf fields:Representation .
+fields:Aim a rdfs:Class .
+fields:Method a rdfs:Class .
+
+fields:layer a rdf:Property ; rdfs:range rdfs:Literal .
+fields:appliedTo a rdf:Property ; rdfs:domain fields:Lens ; rdfs:range fields:Field .
+fields:studies a rdf:Property ; rdfs:domain fields:Field ; rdfs:range fields:Pathway .
+fields:evidencedBy a rdf:Property ; rdfs:domain fields:Pathway ; rdfs:range fields:Record .
+fields:represents a rdf:Property ; rdfs:domain fields:Representation ; rdfs:range fields:Pathway .
+fields:builtFrom a rdf:Property ; rdfs:domain fields:Representation ; rdfs:range fields:Record .
+fields:includes a rdf:Property ; rdfs:domain fields:Representation ; rdfs:range fields:Representation .
+fields:types a rdf:Property ; rdfs:domain fields:Ontology ; rdfs:range fields:Graph .
+fields:informs a rdf:Property ; rdfs:domain fields:Representation ; rdfs:range fields:Aim .
+fields:aimsAt a rdf:Property ; rdfs:domain fields:Model ; rdfs:range fields:Aim .
+fields:analyzes a rdf:Property ; rdfs:domain fields:Method ; rdfs:range fields:Graph .
 
 <#map>
     a fields:Map ;
@@ -66,7 +91,7 @@
     a fields:Ontology ;
     fields:layer "application" ;
     rdfs:label "Ontologies" ;
-    rdfs:comment "A formal, shared vocabulary. Entities, attributes, and claims from cases can be integrated and checked for consistency, then reasoned over. CAC Ontology and CASE/UCO are two in use." ;
+    rdfs:comment "A formal, shared vocabulary. Entities, attributes, and claims from cases can be integrated, checked for consistency, then reasoned over. CAC Ontology and CASE/UCO are two in use." ;
     fields:types <#gr> ;
     layout:x 430 ;
     layout:y 365 ;
