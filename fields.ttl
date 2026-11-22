@@ -1,0 +1,111 @@
+@base <https://mrinaalr.github.io/website/fields#> .
+@prefix fields: <https://mrinaalr.github.io/website/fields#> .
+@prefix layout: <https://mrinaalr.github.io/website/fields-layout#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<#map>
+    a fields:Map ;
+    rdfs:label "Perspectives" ;
+    layout:viewBox "0 0 880 460" .
+
+<#css>
+    a fields:Lens ;
+    fields:layer "lens" ;
+    rdfs:label "Comp. social science" ;
+    rdfs:comment "The lens. Computational methods for studying a social process. I point them at criminology." ;
+    fields:appliedTo <#cc> ;
+    layout:x 78 ;
+    layout:y 250 ;
+    layout:labelDy 38 .
+
+<#cc>
+    a fields:Field ;
+    fields:layer "domain" ;
+    rdfs:label "Criminology" ;
+    rdfs:comment "The field. It studies how crime unfolds and how it can be prevented." ;
+    fields:studies <#path> ;
+    layout:x 210 ;
+    layout:y 145 ;
+    layout:labelDy -36 .
+
+<#path>
+    a fields:Pathway ;
+    fields:layer "domain" ;
+    rdfs:label "Pathways" ;
+    rdfs:comment "The thing I follow. How technology-facilitated exploitation unfolds, step by step, as far as the evidence shows it." ;
+    fields:evidencedBy <#rec> ;
+    layout:x 345 ;
+    layout:y 230 ;
+    layout:labelDy 40 .
+
+<#rec>
+    a fields:Record ;
+    fields:layer "domain" ;
+    rdfs:label "Records" ;
+    rdfs:comment "The evidence. Task force reports, press releases, and federal filings. Models produced from these are restricted to what was detected, investigated, and made public." ;
+    layout:x 470 ;
+    layout:y 120 ;
+    layout:labelDy -36 .
+
+<#kr>
+    a fields:Representation ;
+    fields:layer "application" ;
+    rdfs:label "Representation" ;
+    rdfs:comment "The aim of the methods. A structured account of a pathway that can be compared, queried, and analyzed. Ontologies, graphs, state machines, and frameworks are different representations." ;
+    fields:represents <#path> ;
+    fields:builtFrom <#rec> ;
+    fields:includes <#ont> ;
+    fields:includes <#gr> ;
+    fields:includes <#esm> ;
+    fields:informs <#prev> ;
+    layout:x 560 ;
+    layout:y 255 ;
+    layout:labelDy 40 .
+
+<#ont>
+    a fields:Ontology ;
+    fields:layer "application" ;
+    rdfs:label "Ontologies" ;
+    rdfs:comment "A formal, shared vocabulary. Entities, attributes, and claims from cases can be integrated and checked for consistency, then reasoned over. CAC Ontology and CASE/UCO are two in use." ;
+    fields:types <#gr> ;
+    layout:x 430 ;
+    layout:y 365 ;
+    layout:labelDy 40 .
+
+<#gr>
+    a fields:Graph ;
+    fields:layer "application" ;
+    rdfs:label "Graphs" ;
+    rdfs:comment "Cases linked by shared entities." ;
+    layout:x 670 ;
+    layout:y 365 ;
+    layout:labelDy 40 .
+
+<#esm>
+    a fields:Model ;
+    fields:layer "application" ;
+    rdfs:label "State machine" ;
+    rdfs:comment "A model of a pathway as states and the transitions between them. Captures the actions, affordances, and mechanics of the crime commission process." ;
+    fields:aimsAt <#prev> ;
+    layout:x 778 ;
+    layout:y 219 ;
+    layout:labelDy 40 .
+
+<#prev>
+    a fields:Aim ;
+    fields:layer "aim" ;
+    rdfs:label "Prevention" ;
+    rdfs:comment "The goal. Where a pathway can be cut, at the societal and technological level." ;
+    layout:x 716 ;
+    layout:y 78 ;
+    layout:labelDy -36 .
+
+<#ns>
+    a fields:Method ;
+    fields:layer "method" ;
+    rdfs:label "Network science" ;
+    rdfs:comment "The study of structure and dynamics in systems of connected entities. Provides much of the methodology for comparing cases at scale." ;
+    fields:analyzes <#gr> ;
+    layout:x 800 ;
+    layout:y 400 ;
+    layout:labelDy 40 .

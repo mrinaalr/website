@@ -544,6 +544,98 @@ figcaption {
   margin-top: 1rem;
 }
 
+.fn,
+.fn-back {
+  font-family: var(--mono);
+  font-size: 0.72em;
+  color: var(--barn);
+  text-decoration: none;
+  margin-left: 0.15em;
+  vertical-align: super;
+}
+
+.fn-back {
+  font-size: 0.7em;
+  margin-left: 0;
+  margin-right: 0.4em;
+  vertical-align: super;
+}
+
+.fn:hover,
+.fn-back:hover {
+  color: var(--barn);
+}
+
+.molecule {
+  margin-top: 1.15rem;
+  background: var(--sheet);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.molecule svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+}
+
+.bond {
+  stroke: var(--line);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.bond.is-hot {
+  stroke: var(--ink);
+}
+
+.bond.is-neighbor {
+  stroke-dasharray: 3 5;
+}
+
+.atom .ring {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 1.25;
+}
+
+.atom .atom-hit {
+  fill: transparent;
+}
+
+.atom .nucleus {
+  fill: var(--ink);
+}
+
+.atom-name {
+  font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
+  font-size: 14px;
+  fill: var(--ink);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.atom.is-on .ring {
+  stroke: var(--barn);
+}
+
+.atom.is-on .nucleus {
+  fill: var(--barn);
+}
+
+.atom.is-dim,
+.bond.is-dim {
+  opacity: 0.28;
+}
+
+.gloss {
+  margin-top: 0.85rem;
+  max-width: 38rem;
+  min-height: 3.2rem;
+}
+
+
 footer {
   display: flex;
   flex-wrap: wrap;
